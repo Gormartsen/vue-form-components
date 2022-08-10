@@ -5,9 +5,9 @@ import App from "./App.vue";
 
 window.APP = createApp(App);
 
-import FormControl from './components/FormControl/FormControl.vue';
-window.APP.component("FormControl", FormControl);
+import VueForm from '../index';
+//window.APP.component("FormInput", FormControl);
 
-//window.APP.use(Debug, true);
+window.APP.use(VueForm, true);
 
 window.APP.mount("#app");

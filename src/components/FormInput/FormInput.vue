@@ -69,7 +69,7 @@ defineProps({
 </script>
 <script>
 var acceptedSizes = ['lg', 'sm'];
-var acceptedTypes = ['text', 'email', 'file', 'password', 'textarea'];
+var acceptedTypes = ['text', 'email', 'file', 'password', 'textarea', 'color'];
 
 
 export default {
@@ -106,6 +106,9 @@ export default {
       var classes = 'form-control';
       if(this.readonly) {
         classes = 'form-control-plaintext';
+      }
+      if(this.type == 'color') {
+        classes = 'form-control form-control-color';
       }
       if(this.size) {
         if(acceptedSizes.indexOf(this.size) !== -1) {
