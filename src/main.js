@@ -5,6 +5,8 @@ import App from "./App.vue";
 
 window.APP = createApp(App);
 
+import FormControl from './components/FormControl/FormControl.vue';
+window.APP.component("FormControl", FormControl);
 
 //window.APP.use(Debug, true);
 
