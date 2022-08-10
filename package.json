@@ -4,12 +4,11 @@
   "description": "Vue 3 form components based on Bootstrap 5.1",
   "type": "module",
   "files": [
-    "dist",
+    "index.js",
     "src/components",
     "LICENSE.txt"
   ],
-  "main": "./dist/vue-form-components.umd.js",
-  "module": "./dist/vue-form-components.es.js",
+  "main": "index.js",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
