@@ -1,7 +1,7 @@
 import FormControl from './src/components/FormControl/FormControl.vue';
 
 export default {
-  components: {
-    FormControl,
-  },
+  install:  function(app) {
+    app.component(FormControl.name, FormControl)
+  }
 }

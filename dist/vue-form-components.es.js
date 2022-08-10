@@ -179,8 +179,8 @@ const _sfc_main = /* @__PURE__ */ Object.assign(__default__, {
   }
 });
 var index = {
-  components: {
-    FormControl: _sfc_main
+  install: function(app) {
+    app.component(_sfc_main.name, _sfc_main);
   }
 };
 export { index as default };
