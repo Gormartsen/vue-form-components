@@ -180,7 +180,7 @@ const _sfc_main = /* @__PURE__ */ Object.assign(__default__, {
 });
 var index = {
   install: function(app) {
-    app.component(_sfc_main.name, _sfc_main);
+    app.component("form-control", _sfc_main);
   }
 };
 export { index as default };
