@@ -1,8 +1,7 @@
 <style lang="scss"></style>
 <template>
-
-  <label v-if="label" :for="formId" class="form-label">{{label}}</label>
-  <input 
+  <label v-if="label" :for="formId" class="form-label">{{ label }}</label>
+  <input
     v-if="inputTypeTag == 'input'"
     :id="formId"
     ref="input"
@@ -12,8 +11,8 @@
     :type="inputType"
     :readonly="readonly"
     v-model="text"
-    />
-  <textarea 
+  />
+  <textarea
     v-if="inputTypeTag == 'textarea'"
     :id="formId"
     ref="input"
@@ -23,14 +22,13 @@
     v-model="text"
     :rows="rows"
     :readonly="readonly"
-    ></textarea>
-  <div v-if="describe" 
-    :id="formId + '-described'"
-    class="form-text">{{describe}}</div>
-
+  ></textarea>
+  <div v-if="describe" :id="formId + '-described'" class="form-text">
+    {{ describe }}
+  </div>
 </template>
 <script setup>
-import {getFormItemId} from "../id-generator";
+import { getFormItemId } from "../id-generator";
 defineProps({
   label: {
     required: false,
@@ -68,9 +66,8 @@ defineProps({
 });
 </script>
 <script>
-var acceptedSizes = ['lg', 'sm'];
-var acceptedTypes = ['text', 'email', 'file', 'password', 'textarea', 'color'];
-
+var acceptedSizes = ["lg", "sm"];
+var acceptedTypes = ["text", "email", "file", "password", "textarea", "color"];
 
 export default {
   // Properties returned from data() become reactive state
@@ -79,73 +76,72 @@ export default {
     return {
       formId: "",
       text: "",
-      inputTypeTag: "input"
+      inputTypeTag: "input",
     };
   },
   computed: {
-    describedby: function(){
-      if(!this.describe) {
-        return 
+    describedby: function () {
+      if (!this.describe) {
+        return;
       }
-      return this.formId + '-described';
-    }, 
-    inputType: function(){
-      var defaultType="text";
-      if(this.type == 'textarea') {
-        return
+      return this.formId + "-described";
+    },
+    inputType: function () {
+      var defaultType = "text";
+      if (this.type == "textarea") {
+        return;
       }
-      if(this.type) {
-        if(acceptedTypes.indexOf(this.type) !== -1) {
-          defaultType = this.type
+      if (this.type) {
+        if (acceptedTypes.indexOf(this.type) !== -1) {
+          defaultType = this.type;
         }
       }
       return defaultType;
-      
     },
-    inputClasses: function(){
-      var classes = 'form-control';
-      if(this.readonly) {
-        classes = 'form-control-plaintext';
+    inputClasses: function () {
+      var classes = "form-control";
+      if (this.readonly) {
+        classes = "form-control-plaintext";
       }
-      if(this.type == 'color') {
-        classes = 'form-control form-control-color';
+      if (this.type == "color") {
+        classes = "form-control form-control-color";
       }
-      if(this.size) {
-        if(acceptedSizes.indexOf(this.size) !== -1) {
-          classes = classes + ' form-control-' + this.size
+      if (this.size) {
+        if (acceptedSizes.indexOf(this.size) !== -1) {
+          classes = classes + " form-control-" + this.size;
         }
       }
       return classes;
-    }
+    },
   },
   watch: {
-    text: function(newValue){
-      return this.$emit("update:modelValue", newValue )
-    }
+    text: function (newValue) {
+      return this.$emit("update:modelValue", newValue);
+    },
   },
-  updated: function() {
-    if(this.disabled) {
-      this.$refs['input'].disabled = true;
+  updated: function () {
+    if (this.disabled) {
+      this.$refs["input"].disabled = true;
     } else {
-      this.$refs['input'].disabled = false;
+      this.$refs["input"].disabled = false;
     }
-    if(this.modelValue !== undefined) {
+    if (this.modelValue !== undefined) {
       this.text = this.modelValue;
     }
   },
-  created: function() {
-    this.formId = getFormItemId(this.inputType, this.id)
+  created: function () {
+    this.formId = getFormItemId(this.inputType, this.id);
     this.text = this.modelValue;
-    if(this.type == 'textarea') {
+    if (this.type == "textarea") {
       this.inputTypeTag = "textarea";
     }
-    if(this.value) {
+    if (this.value) {
       this.text = this.value;
     }
   },
-  mounted: function() {
-    if(this.disabled) {
-      this.$refs['input'].disabled = true;
+  mounted: function () {
+    if (this.disabled) {
+      this.$refs["input"].disabled = true;
     }
   },
 };
