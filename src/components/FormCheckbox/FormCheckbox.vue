@@ -1,37 +1,21 @@
 <style lang="scss"></style>
 <template>
-  <label v-if="label" :for="formId" class="form-label">{{ label }}</label>
-
-  <select
+<div class="form-check">
+  <input
     :id="formId"
     ref="input"
     :class="inputClasses"
-    :aria-describedby="describedby"
-    :readonly="readonly"
+    :placeholder="placeholder"
+    type="checkbox"
     v-model="text"
-    :multiple="multiple"
-  >
-    <option v-for="(name, index) in options" :key="index" :value="index">
-      {{ name }}
-    </option>
-  </select>
-  <div v-if="describe" :id="formId + '-described'" class="form-text">
-    {{ describe }}
-  </div>
+  />
+  <label v-if="label" :for="formId" class="form-check-label">{{ label }}</label>
+</div>
 </template>
 <script setup>
 import { getFormItemId } from "../id-generator";
 defineProps({
   label: {
-    required: false,
-  },
-  size: {
-    required: false,
-  },
-  describe: {
-    required: false,
-  },
-  multiple: {
     required: false,
   },
   id: {
@@ -40,14 +24,8 @@ defineProps({
   disabled: {
     required: false,
   },
-  readonly: {
-    required: false,
-  },
   value: {
     required: false,
-  },
-  options: {
-    required: true,
   },
   modelValue: {
     required: false,
@@ -55,7 +33,7 @@ defineProps({
 });
 </script>
 <script>
-var acceptedSizes = ["lg", "sm"];
+
 
 export default {
   // Properties returned from data() become reactive state
@@ -64,30 +42,12 @@ export default {
     return {
       formId: "",
       text: "",
-      type: "select",
+      type: "checkbox",
     };
   },
   computed: {
-    describedby: function () {
-      if (!this.describe) {
-        return;
-      }
-      return this.formId + "-described";
-    },
-
     inputClasses: function () {
-      var classes = "form-select";
-      if (this.readonly) {
-        classes = "form-select-plaintext";
-      }
-      if (this.type == "color") {
-        classes = "form-select form-select-color";
-      }
-      if (this.size) {
-        if (acceptedSizes.indexOf(this.size) !== -1) {
-          classes = classes + " form-select-" + this.size;
-        }
-      }
+      var classes = "form-check-input";
       return classes;
     },
   },

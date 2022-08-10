@@ -92,6 +92,66 @@
         </fieldset>
       </div>
     </div>
+    <div class="row">
+      <div class="col-12">
+        <h2># Form Select</h2>
+        <fieldset>
+          <pre>{{ formControl }}</pre>
+          <form-checkbox
+            v-model="formControl.checkbox"
+          />
+          <span>Some text</span>
+          <form-checkbox
+            v-model="formControl.checkbox"
+            class="form-switch"
+          />
+          <form-checkbox
+            v-model="formControl.checkbox"
+            class="btn-check"
+          />
+
+          <form-checkbox
+            :label="'select true/false'"
+            v-model="formControl.checkbox"
+          />
+
+          <form-checkbox
+            :label="'select true/false'"
+            :disabled="true"
+            
+            v-model="formControl.checkbox"
+          />
+          <div>
+            <form-checkbox
+            :label="'select true/false'"
+            v-model="formControl.checkbox"
+            class="form-check-inline"
+          />
+
+          <form-checkbox
+            :label="'select true/false'"
+            :disabled="true"
+            class="form-check-inline"
+            v-model="formControl.checkbox"
+          />
+          </div>
+          <div>
+            <form-checkbox
+            :label="'select true/false'"
+            v-model="formControl.checkbox"
+            class="form-switch"
+          />
+
+          <form-checkbox
+            :label="'select true/false'"
+            :disabled="true"
+            class="form-switch"
+            v-model="formControl.checkbox"
+          />
+          </div>
+        </fieldset>
+      </div>
+    </div>
   </div>
 </template>
 <script setup></script>
@@ -109,6 +169,7 @@ export default {
         color: "",
         select: 2,
         selectMultiple: [1, 2],
+        checkbox: false,
       },
       formSelectOptions: {
         array: ["test", "test 2 ", "test 3"],
