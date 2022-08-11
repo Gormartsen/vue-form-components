@@ -220,6 +220,9 @@
               :label="'range 4'"
               :options="formRadioOptions.array"
               v-model="formRange.range4"
+              :min="0"
+              :max="1"
+              :step="0.1"
             />
           </div>
           <div class="form-control">
@@ -227,6 +230,9 @@
               :label="'range 5'"
               :options="formRadioOptions.array"
               v-model="formRange.range5"
+              :min="0"
+              :max="10"
+              :step="1"
             />
           </div>
         </fieldset>

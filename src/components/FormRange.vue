@@ -7,6 +7,9 @@
   :class="inputClasses"
   type="range"
   v-model="text"
+  :min="min"
+  :max="max"
+  :step="step"
 />
     
 </template>
@@ -17,6 +20,15 @@ defineProps({
     required: false,
   },
   id: {
+    required: false,
+  },
+  min: {
+    required: false,
+  },
+  max: {
+    required: false,
+  },
+  step: {
     required: false,
   },
   disabled: {
@@ -49,7 +61,11 @@ export default {
   },
   watch: {
     text: function (newValue) {
-      return this.$emit("update:modelValue", newValue);
+      if(newValue % 1 === 0){
+        return this.$emit("update:modelValue", parseInt(newValue));
+      } else {
+        return this.$emit("update:modelValue", parseFloat(newValue));
+      }
     },
   },
   updated: function () {
