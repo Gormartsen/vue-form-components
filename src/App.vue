@@ -189,6 +189,49 @@
         </fieldset>
       </div>
     </div>
+    <div class="row">
+      <div class="col-12">
+        <h2># Form Range</h2>
+        <fieldset>
+          <pre>{{ formRange }}</pre>
+          <div class="form-control">
+            <form-range
+              :options="formRadioOptions.array"
+              v-model="formRange.range1"
+            />
+          </div>
+          <div class="form-control">
+            <form-range
+              :label="'range 2'"
+              :options="formRadioOptions.object"
+              v-model="formRange.range2"
+            />
+          </div>
+          <div class="form-control">
+            <form-range
+              :label="'range 3'"
+              :options="formRadioOptions.object"
+              v-model="formRange.range3"
+              :disabled="true"
+            />
+          </div>
+          <div class="form-control">
+            <form-range
+              :label="'range 4'"
+              :options="formRadioOptions.array"
+              v-model="formRange.range4"
+            />
+          </div>
+          <div class="form-control">
+            <form-range
+              :label="'range 5'"
+              :options="formRadioOptions.array"
+              v-model="formRange.range5"
+            />
+          </div>
+        </fieldset>
+      </div>
+    </div>
   </div>
 </template>
 <script setup></script>
@@ -241,6 +284,13 @@ export default {
           test2: "test 2",
           test3: "test 3",
         },
+      },
+      formRange: {
+        range1: 0,
+        range2: 100,
+        range3: 0.5,
+        range4: 1,
+        range5: 2,
       },
     };
   },
