@@ -5,7 +5,6 @@
     :id="formId"
     ref="input"
     :class="inputClasses"
-    :placeholder="placeholder"
     type="checkbox"
     v-model="text"
   />
@@ -41,7 +40,7 @@ export default {
   data() {
     return {
       formId: "",
-      text: "",
+      text: false,
       type: "checkbox",
     };
   },
@@ -62,15 +61,21 @@ export default {
     } else {
       this.$refs["input"].disabled = false;
     }
-    if (this.modelValue !== undefined) {
-      this.text = this.modelValue;
+    if (this.modelValue) {
+      this.text = true;
+    } else {
+      this.text = false;
     }
   },
   created: function () {
     this.formId = getFormItemId(this.type, this.id);
-    this.text = this.modelValue;
+    if(this.modelValue) {
+      this.text = true;
+    } else {
+      this.$emit("update:modelValue", false);
+    }
     if (this.value) {
-      this.text = this.value;
+      this.text = true;
     }
   },
   mounted: function () {

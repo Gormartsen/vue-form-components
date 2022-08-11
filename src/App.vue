@@ -96,35 +96,35 @@
       <div class="col-12">
         <h2># Form Select</h2>
         <fieldset>
-          <pre>{{ formControl }}</pre>
+          <pre>{{ checkbox }}</pre>
           <form-checkbox
-            v-model="formControl.checkbox"
+            v-model="checkbox.checkbox1"
           />
           <span>Some text</span>
           <form-checkbox
-            v-model="formControl.checkbox"
+            v-model="checkbox.checkbox2"
             class="form-switch"
           />
           <form-checkbox
-            v-model="formControl.checkbox"
+            v-model="checkbox.checkbox3"
             class="btn-check"
           />
 
           <form-checkbox
             :label="'select true/false'"
-            v-model="formControl.checkbox"
+            v-model="checkbox.checkbox4"
           />
 
           <form-checkbox
             :label="'select true/false'"
             :disabled="true"
             
-            v-model="formControl.checkbox"
+            v-model="checkbox.checkbox1"
           />
           <div>
             <form-checkbox
             :label="'select true/false'"
-            v-model="formControl.checkbox"
+            v-model="checkbox.checkbox2"
             class="form-check-inline"
           />
 
@@ -132,13 +132,13 @@
             :label="'select true/false'"
             :disabled="true"
             class="form-check-inline"
-            v-model="formControl.checkbox"
+            v-model="checkbox.checkbox3"
           />
           </div>
           <div>
             <form-checkbox
             :label="'select true/false'"
-            v-model="formControl.checkbox"
+            v-model="checkbox.checkbox4"
             class="form-switch"
           />
 
@@ -146,7 +146,46 @@
             :label="'select true/false'"
             :disabled="true"
             class="form-switch"
-            v-model="formControl.checkbox"
+            v-model="checkbox.checkbox1"
+          />
+          </div>
+        </fieldset>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <h2># Form Radio</h2>
+        <fieldset>
+          <pre>{{ formRadio }}</pre>
+          <div class="form-control">
+          <form-radio
+            :label="'select array'"
+            :size="'sm'"
+            :options="formRadioOptions.array"
+            v-model="formRadio.radio1"
+          />
+          </div>
+          <div class="form-control">
+          <form-radio
+            :label="'select Color'"
+            :size="'lg'"
+            :options="formRadioOptions.array"
+            v-model="formRadio.radio2"
+          />
+          </div>
+          <div class="form-control">
+          <form-radio
+            :label="'select Color'"
+            :disabled="true"
+            :options="formRadioOptions.array"
+            v-model="formRadio.radio3"
+          />
+          </div>
+          <div class="form-control">
+          <form-radio
+            :describe="'select Color'"
+            :options="formRadioOptions.array"
+            v-model="formRadio.radio4"
           />
           </div>
         </fieldset>
@@ -171,7 +210,23 @@ export default {
         selectMultiple: [1, 2],
         checkbox: false,
       },
+      checkbox: {
+        checkbox1: 0,
+        checkbox2: 1,
+        checkbox3: true,
+        checkbox4: false,
+      },
+
+      formRadio: {
+        radio1: 0,
+        radio2: 0,
+        radio3: 0,
+        radio4: 0,
+      },
       formSelectOptions: {
+        array: ["test", "test 2 ", "test 3"],
+      },
+      formRadioOptions: {
         array: ["test", "test 2 ", "test 3"],
       },
     };
