@@ -1,13 +1,10 @@
 <style lang="scss"></style>
 <template>
-  <div>text: {{ selected }}</div>
   <div class="form-check" v-for="(item, index) in options" :key="index">
-    <span> </span>
     <input
       :id="getRadioId(true)"
       ref="input"
       class="form-check-input"
-      :aria-describedby="describedby"
       :readonly="readonly"
       v-model="selected"
       :value="index"
@@ -67,12 +64,6 @@ export default {
     };
   },
   computed: {
-    describedby: function () {
-      if (!this.describe) {
-        return;
-      }
-      return this.formId + "-described";
-    },
   },
   watch: {
     selected: function (newValue) {

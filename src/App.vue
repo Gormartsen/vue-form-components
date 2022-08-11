@@ -39,6 +39,10 @@
             v-model="formControl.textarea"
             :rows="5"
           />
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon1">@</span>
+            <form-input placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" />
+          </div>
         </fieldset>
         <fieldset>
           <pre>{{ formControl }}</pre>
@@ -196,21 +200,18 @@
           <pre>{{ formRange }}</pre>
           <div class="form-control">
             <form-range
-              :options="formRadioOptions.array"
               v-model="formRange.range1"
             />
           </div>
           <div class="form-control">
             <form-range
               :label="'range 2'"
-              :options="formRadioOptions.object"
               v-model="formRange.range2"
             />
           </div>
           <div class="form-control">
             <form-range
               :label="'range 3'"
-              :options="formRadioOptions.object"
               v-model="formRange.range3"
               :disabled="true"
             />
@@ -218,7 +219,6 @@
           <div class="form-control">
             <form-range
               :label="'range 4'"
-              :options="formRadioOptions.array"
               v-model="formRange.range4"
               :min="0"
               :max="1"
@@ -228,7 +228,6 @@
           <div class="form-control">
             <form-range
               :label="'range 5'"
-              :options="formRadioOptions.array"
               v-model="formRange.range5"
               :min="0"
               :max="10"
