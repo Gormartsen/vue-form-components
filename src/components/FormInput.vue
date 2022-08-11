@@ -71,6 +71,9 @@ defineProps({
   "aria-describedby": {
     required: false,
   },
+  autofocus: {
+    required: false,
+  }
 });
 </script>
 <script>
@@ -156,6 +159,9 @@ export default {
   mounted: function () {
     if (this.disabled) {
       this.$refs["input"].disabled = true;
+    }
+    if(this.autofocus) {
+      this.$refs["input"].focus();
     }
   },
 };
