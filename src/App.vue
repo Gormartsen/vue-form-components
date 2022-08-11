@@ -59,42 +59,48 @@
       <div class="col-12">
         <h2># Form Select</h2>
         <fieldset>
-          <pre>{{ formControl }}</pre>
+          <pre>{{ select }}</pre>
           <form-select
             :label="'select array'"
             :size="'sm'"
             :options="formSelectOptions.array"
-            v-model="formControl.select"
+            v-model="select.select1"
           />
           <form-select
             :label="'select Color'"
             :size="'lg'"
             :options="formSelectOptions.array"
-            v-model="formControl.select"
+            v-model="select.select1"
           />
           <form-select
             :label="'select Color'"
             :disabled="true"
             :options="formSelectOptions.array"
-            v-model="formControl.select"
+            v-model="select.select1"
           />
           <form-select
-            :describe="'select Color'"
-            :options="formSelectOptions.array"
-            v-model="formControl.select"
+            :describe="'select Object'"
+            :options="formSelectOptions.object"
+            v-model="select.select2"
           />
           <form-select
             :describe="'select Color'"
             :multiple="true"
             :options="formSelectOptions.array"
-            v-model="formControl.selectMultiple"
+            v-model="select.selectMultiple"
+          />
+          <form-select
+            :describe="'select Color'"
+            :multiple="true"
+            :options="formSelectOptions.object"
+            v-model="select.selectMultiple2"
           />
         </fieldset>
       </div>
     </div>
     <div class="row">
       <div class="col-12">
-        <h2># Form Select</h2>
+        <h2># Form Checkbox</h2>
         <fieldset>
           <pre>{{ checkbox }}</pre>
           <form-checkbox
@@ -207,9 +213,13 @@ export default {
         textarea: "some text",
         file: "",
         color: "",
-        select: 2,
-        selectMultiple: [1, 2],
         checkbox: false,
+      },
+      select: {
+        select1: 2,
+        select2: "test2",
+        selectMultiple: [1, 2],
+        selectMultiple2: ["test1", "test3"],
       },
       checkbox: {
         checkbox1: 0,
@@ -227,6 +237,11 @@ export default {
       },
       formSelectOptions: {
         array: ["test", "test 2 ", "test 3", "test 4"],
+        object: {
+          test1: "test 1",
+          test2: "test 2",
+          test3: "test 3",
+        }
       },
       formRadioOptions: {
         array: ["test", "test 2 ", "test 3", "test 4"],
