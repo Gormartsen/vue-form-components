@@ -11,6 +11,7 @@
     :type="inputType"
     :readonly="readonly"
     v-model="text"
+    :aria-label="arialabel"
   />
   <textarea
     v-if="inputTypeTag == 'textarea'"
@@ -19,6 +20,7 @@
     :class="inputClasses"
     :placeholder="placeholder"
     :aria-describedby="describedby"
+    :aria-label="arialabel"
     v-model="text"
     :rows="rows"
     :readonly="readonly"
@@ -63,6 +65,12 @@ defineProps({
   modelValue: {
     required: false,
   },
+  "aria-label": {
+    required: false,
+  },
+  "aria-describedby": {
+    required: false,
+  },
 });
 </script>
 <script>
@@ -77,15 +85,11 @@ export default {
       formId: "",
       text: "",
       inputTypeTag: "input",
+      arialabel: undefined,
+      describedby: undefined,
     };
   },
   computed: {
-    describedby: function () {
-      if (!this.describe) {
-        return;
-      }
-      return this.formId + "-described";
-    },
     inputType: function () {
       var defaultType = "text";
       if (this.type == "textarea") {
@@ -137,6 +141,16 @@ export default {
     }
     if (this.value) {
       this.text = this.value;
+    }
+    
+    if(this['ariaLabel']) {
+      this.arialabel = this['ariaLabel'];
+    }
+    if(this['ariaDescribedby']) {
+      this.describedby = this['ariaDescribedby'];
+    }
+    if(this.describe) {
+      this.describedby = this.formId + "-described";
     }
   },
   mounted: function () {
