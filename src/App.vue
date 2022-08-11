@@ -60,8 +60,7 @@
         <h2># Form Select</h2>
         <fieldset>
           <pre>{{ formControl }}</pre>
-          <form-select
-            :label="'select array'"
+          <form-selec:label="'select array'"
             :size="'sm'"
             :options="formSelectOptions.array"
             v-model="formControl.select"
@@ -159,38 +158,30 @@
           <pre>{{ formRadio }}</pre>
           <div class="form-control">
           <form-radio
-            :label="'select array'"
-            :size="'sm'"
             :options="formRadioOptions.array"
             v-model="formRadio.radio1"
           />
           </div>
           <div class="form-control">
           <form-radio
-            :label="'select Color'"
-            :size="'lg'"
             :options="formRadioOptions.array"
             v-model="formRadio.radio2"
           />
           </div>
           <div class="form-control">
           <form-radio
-            :label="'select Color'"
-            :disabled="true"
             :options="formRadioOptions.array"
             v-model="formRadio.radio3"
           />
           </div>
           <div class="form-control">
           <form-radio
-            :describe="'select Color'"
             :options="formRadioOptions.array"
             v-model="formRadio.radio4"
           />
           </div>
           <div class="form-control">
           <form-radio
-            :label="'select Color'"
             :disabled="[0,3]"
             :options="formRadioOptions.array"
             v-model="formRadio.radio5"

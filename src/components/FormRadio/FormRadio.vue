@@ -15,7 +15,7 @@
       type="radio"
       :disabled="IsDisabled(index)"
     >
-    <label v-if="label" :for="getRadioId()" class="form-check-label">{{ item }}</label>
+    <label :for="getRadioId()" class="form-check-label">{{ item }}</label>
   </div>
 
 </template>
@@ -23,9 +23,6 @@
 import { getFormItemId } from "../id-generator";
 
 defineProps({
-  label: {
-    required: false,
-  },
   id: {
     required: false,
   },
