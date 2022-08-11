@@ -188,6 +188,14 @@
             v-model="formRadio.radio4"
           />
           </div>
+          <div class="form-control">
+          <form-radio
+            :label="'select Color'"
+            :disabled="[0,3]"
+            :options="formRadioOptions.array"
+            v-model="formRadio.radio5"
+          />
+          </div>
         </fieldset>
       </div>
     </div>
@@ -219,15 +227,16 @@ export default {
 
       formRadio: {
         radio1: 0,
-        radio2: 0,
-        radio3: 0,
-        radio4: 0,
+        radio2: 1,
+        radio3: 2,
+        radio4: 3,
+        radio5: -1,
       },
       formSelectOptions: {
-        array: ["test", "test 2 ", "test 3"],
+        array: ["test", "test 2 ", "test 3", "test 4"],
       },
       formRadioOptions: {
-        array: ["test", "test 2 ", "test 3"],
+        array: ["test", "test 2 ", "test 3", "test 4"],
       },
     };
   },

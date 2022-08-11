@@ -1,19 +1,21 @@
 <style lang="scss"></style>
 <template>
-
+  <div>text: {{selected}}</div>
   <div class="form-check" v-for="(item, index) in options" :key="index">
-    <span> text:{{text}}</span>
+    <span> </span>
     <input
-      :id="getFormItemId('radio')"
+      :id="getRadioId(true)"
       ref="input"
       class="form-check-input"
       :aria-describedby="describedby"
       :readonly="readonly"
-      v-on:click="selectRadio(index)"
+      v-model="selected"
+      :value="index"
       :name="name"
       type="radio"
+      :disabled="IsDisabled(index)"
     >
-    <label v-if="label" :for="formId" class="form-label">{{ item }}</label>
+    <label v-if="label" :for="getRadioId()" class="form-check-label">{{ item }}</label>
   </div>
 
 </template>
@@ -22,15 +24,6 @@ import { getFormItemId } from "../id-generator";
 
 defineProps({
   label: {
-    required: false,
-  },
-  size: {
-    required: false,
-  },
-  describe: {
-    required: false,
-  },
-  multiple: {
     required: false,
   },
   id: {
@@ -64,15 +57,17 @@ var RadioName = function(){
   FormRadiosID++;
   return name + '-' + FormRadiosID;
 }
+
 export default {
   // Properties returned from data() become reactive state
   // and will be exposed on `this`.
   data() {
     return {
       formId: "",
-      text: "",
       type: "select",
-      name: ""
+      name: "",
+      selected: 0,
+      lastFormRadioID: 0,
     };
   },
   computed: {
@@ -84,37 +79,44 @@ export default {
     },
   },
   watch: {
-    text: function (newValue) {
+    selected: function (newValue) {
       return this.$emit("update:modelValue", newValue);
     },
   },
   methods: {
-    selectRadio: function(i) {
-      this.text = i
+    getRadioId: function(isNew){
+      if(isNew) {
+        this.lastFormRadioID = getFormItemId('radio')
+      }
+      return this.lastFormRadioID;
+    },
+    IsDisabled: function(index) {
+      if(!this.disabled) {
+        return;
+      }
+      if(!this.disabled.indexOf) {
+        return
+      }
+      if(this.disabled.indexOf(index) !== -1) {
+        return true;
+      }
+      return;
     }
   },  
   updated: function () {
-    if (this.disabled) {
-      this.$refs["input"].disabled = true;
-    } else {
-      this.$refs["input"].disabled = false;
-    }
     if (this.modelValue !== undefined) {
-      this.text = this.modelValue;
+      this.selected = this.modelValue;
     }
   },
   created: function () {
     this.formId = getFormItemId(this.type, this.id);
     this.name = RadioName();
-    this.text = this.modelValue;
+    this.selected = this.modelValue;
     if (this.value) {
-      this.text = this.value;
+      this.selected = this.value;
     }
   },
   mounted: function () {
-    if (this.disabled) {
-      this.$refs["input"].disabled = true;
-    }
   },
 };
 </script>
