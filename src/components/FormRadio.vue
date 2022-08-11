@@ -2,7 +2,7 @@
 <template>
   <div class="form-check" v-for="(item, index) in options" :key="index">
     <input
-      :id="getRadioId(true)"
+      :id="getRadioId(index)"
       ref="input"
       class="form-check-input"
       :readonly="readonly"
@@ -12,7 +12,7 @@
       type="radio"
       :disabled="IsDisabled(index)"
     />
-    <label :for="getRadioId()" class="form-check-label">{{ item }}</label>
+    <label :for="getRadioId(index)" class="form-check-label">{{ item }}</label>
   </div>
 </template>
 <script setup>
@@ -60,7 +60,7 @@ export default {
       type: "select",
       name: "",
       selected: 0,
-      lastFormRadioID: 0,
+      generatedIds: {}
     };
   },
   computed: {
@@ -71,11 +71,12 @@ export default {
     },
   },
   methods: {
-    getRadioId: function (isNew) {
-      if (isNew) {
-        this.lastFormRadioID = getFormItemId("radio");
+    getRadioId: function (item) {
+      if(this.generatedIds[item]) {
+        return this.generatedIds[item]
       }
-      return this.lastFormRadioID;
+      this.generatedIds[item] = getFormItemId("radio")
+      return this.generatedIds[item]
     },
     IsDisabled: function (index) {
       if (!this.disabled) {
