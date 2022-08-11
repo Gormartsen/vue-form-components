@@ -12,6 +12,7 @@
     :readonly="readonly"
     v-model="text"
     :aria-label="arialabel"
+    v-on:focusout="$emit('focusout')"
   />
   <textarea
     v-if="inputTypeTag == 'textarea'"
