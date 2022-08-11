@@ -60,7 +60,8 @@
         <h2># Form Select</h2>
         <fieldset>
           <pre>{{ formControl }}</pre>
-          <form-selec:label="'select array'"
+          <form-select
+            :label="'select array'"
             :size="'sm'"
             :options="formSelectOptions.array"
             v-model="formControl.select"
@@ -164,14 +165,15 @@
           </div>
           <div class="form-control">
           <form-radio
-            :options="formRadioOptions.array"
+            :options="formRadioOptions.object"
             v-model="formRadio.radio2"
           />
           </div>
           <div class="form-control">
           <form-radio
-            :options="formRadioOptions.array"
+            :options="formRadioOptions.object"
             v-model="formRadio.radio3"
+            :disabled="['test2']"
           />
           </div>
           <div class="form-control">
@@ -218,8 +220,8 @@ export default {
 
       formRadio: {
         radio1: 0,
-        radio2: 1,
-        radio3: 2,
+        radio2: "test2",
+        radio3: "test3",
         radio4: 3,
         radio5: -1,
       },
@@ -228,6 +230,11 @@ export default {
       },
       formRadioOptions: {
         array: ["test", "test 2 ", "test 3", "test 4"],
+        object: {
+          test1: "test 1",
+          test2: "test 2",
+          test3: "test 3",
+        }
       },
     };
   },
