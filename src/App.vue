@@ -11,28 +11,28 @@
           <pre>{{ formControl }}</pre>
           <form-input v-model="formControl.noTitle" />
           <form-input
-            :label="'Input Example Small'"
-            :size="'sm'"
+            label="Input Example Small"
+            size="sm"
             v-model="formControl.inputSmall"
           />
-          <form-input :label="'Input Example'" />
-          <form-input :label="'Input Example Large'" :size="'lg'" />
+          <form-input label="Input Example" />
+          <form-input label="Input Example Large" size="lg" />
           <form-input
-            :label="'Input Example with Placeholder'"
-            :placeholder="'placeholder: Please provide something'"
+            label="Input Example with Placeholder"
+            placeholder="placeholder: Please provide something"
           />
           <form-input
-            :label="'Input Example with description'"
-            :describe="'input describe'"
+            label="Input Example with description"
+            describe="input describe"
           />
-          <form-input :label="'Disabled Input Example'" :disabled="true" />
+          <form-input label="Disabled Input Example" :disabled="true" />
           <form-input
-            :label="'readonly Input Example'"
+            label="readonly Input Example"
             :readonly="true"
-            :value="'readonly text'"
+            value="readonly text"
           />
-          <form-input :label="'ID Input Example'" :id="'my-custom-id'" />
-          <form-input :label="'ID Input Example second'" :id="'my-custom-id'" />
+          <form-input label="ID Input Example" id="my-custom-id" />
+          <form-input label="ID Input Example second" id="my-custom-id" />
           <form-input
             :label="'Text area'"
             :type="'textarea'"
