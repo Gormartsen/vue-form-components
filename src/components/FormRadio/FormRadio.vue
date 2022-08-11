@@ -1,6 +1,6 @@
 <style lang="scss"></style>
 <template>
-  <div>text: {{selected}}</div>
+  <div>text: {{ selected }}</div>
   <div class="form-check" v-for="(item, index) in options" :key="index">
     <span> </span>
     <input
@@ -14,10 +14,9 @@
       :name="name"
       type="radio"
       :disabled="IsDisabled(index)"
-    >
+    />
     <label :for="getRadioId()" class="form-check-label">{{ item }}</label>
   </div>
-
 </template>
 <script setup>
 import { getFormItemId } from "../id-generator";
@@ -45,15 +44,15 @@ defineProps({
 </script>
 <script>
 var FormRadiosID = -1;
-var RadioName = function(){
-  var name = 'form-radio';
-  if(FormRadiosID == -1) {
-    FormRadiosID++
-    return name
+var RadioName = function () {
+  var name = "form-radio";
+  if (FormRadiosID == -1) {
+    FormRadiosID++;
+    return name;
   }
   FormRadiosID++;
-  return name + '-' + FormRadiosID;
-}
+  return name + "-" + FormRadiosID;
+};
 
 export default {
   // Properties returned from data() become reactive state
@@ -81,25 +80,25 @@ export default {
     },
   },
   methods: {
-    getRadioId: function(isNew){
-      if(isNew) {
-        this.lastFormRadioID = getFormItemId('radio')
+    getRadioId: function (isNew) {
+      if (isNew) {
+        this.lastFormRadioID = getFormItemId("radio");
       }
       return this.lastFormRadioID;
     },
-    IsDisabled: function(index) {
-      if(!this.disabled) {
+    IsDisabled: function (index) {
+      if (!this.disabled) {
         return;
       }
-      if(!this.disabled.indexOf) {
-        return
+      if (!this.disabled.indexOf) {
+        return;
       }
-      if(this.disabled.indexOf(index) !== -1) {
+      if (this.disabled.indexOf(index) !== -1) {
         return true;
       }
       return;
-    }
-  },  
+    },
+  },
   updated: function () {
     if (this.modelValue !== undefined) {
       this.selected = this.modelValue;
@@ -113,7 +112,6 @@ export default {
       this.selected = this.value;
     }
   },
-  mounted: function () {
-  },
+  mounted: function () {},
 };
 </script>

@@ -103,18 +103,10 @@
         <h2># Form Checkbox</h2>
         <fieldset>
           <pre>{{ checkbox }}</pre>
-          <form-checkbox
-            v-model="checkbox.checkbox1"
-          />
+          <form-checkbox v-model="checkbox.checkbox1" />
           <span>Some text</span>
-          <form-checkbox
-            v-model="checkbox.checkbox2"
-            class="form-switch"
-          />
-          <form-checkbox
-            v-model="checkbox.checkbox3"
-            class="btn-check"
-          />
+          <form-checkbox v-model="checkbox.checkbox2" class="form-switch" />
+          <form-checkbox v-model="checkbox.checkbox3" class="btn-check" />
 
           <form-checkbox
             :label="'select true/false'"
@@ -124,36 +116,35 @@
           <form-checkbox
             :label="'select true/false'"
             :disabled="true"
-            
             v-model="checkbox.checkbox1"
           />
           <div>
             <form-checkbox
-            :label="'select true/false'"
-            v-model="checkbox.checkbox2"
-            class="form-check-inline"
-          />
+              :label="'select true/false'"
+              v-model="checkbox.checkbox2"
+              class="form-check-inline"
+            />
 
-          <form-checkbox
-            :label="'select true/false'"
-            :disabled="true"
-            class="form-check-inline"
-            v-model="checkbox.checkbox3"
-          />
+            <form-checkbox
+              :label="'select true/false'"
+              :disabled="true"
+              class="form-check-inline"
+              v-model="checkbox.checkbox3"
+            />
           </div>
           <div>
             <form-checkbox
-            :label="'select true/false'"
-            v-model="checkbox.checkbox4"
-            class="form-switch"
-          />
+              :label="'select true/false'"
+              v-model="checkbox.checkbox4"
+              class="form-switch"
+            />
 
-          <form-checkbox
-            :label="'select true/false'"
-            :disabled="true"
-            class="form-switch"
-            v-model="checkbox.checkbox1"
-          />
+            <form-checkbox
+              :label="'select true/false'"
+              :disabled="true"
+              class="form-switch"
+              v-model="checkbox.checkbox1"
+            />
           </div>
         </fieldset>
       </div>
@@ -164,36 +155,36 @@
         <fieldset>
           <pre>{{ formRadio }}</pre>
           <div class="form-control">
-          <form-radio
-            :options="formRadioOptions.array"
-            v-model="formRadio.radio1"
-          />
+            <form-radio
+              :options="formRadioOptions.array"
+              v-model="formRadio.radio1"
+            />
           </div>
           <div class="form-control">
-          <form-radio
-            :options="formRadioOptions.object"
-            v-model="formRadio.radio2"
-          />
+            <form-radio
+              :options="formRadioOptions.object"
+              v-model="formRadio.radio2"
+            />
           </div>
           <div class="form-control">
-          <form-radio
-            :options="formRadioOptions.object"
-            v-model="formRadio.radio3"
-            :disabled="['test2']"
-          />
+            <form-radio
+              :options="formRadioOptions.object"
+              v-model="formRadio.radio3"
+              :disabled="['test2']"
+            />
           </div>
           <div class="form-control">
-          <form-radio
-            :options="formRadioOptions.array"
-            v-model="formRadio.radio4"
-          />
+            <form-radio
+              :options="formRadioOptions.array"
+              v-model="formRadio.radio4"
+            />
           </div>
           <div class="form-control">
-          <form-radio
-            :disabled="[0,3]"
-            :options="formRadioOptions.array"
-            v-model="formRadio.radio5"
-          />
+            <form-radio
+              :disabled="[0, 3]"
+              :options="formRadioOptions.array"
+              v-model="formRadio.radio5"
+            />
           </div>
         </fieldset>
       </div>
@@ -241,7 +232,7 @@ export default {
           test1: "test 1",
           test2: "test 2",
           test3: "test 3",
-        }
+        },
       },
       formRadioOptions: {
         array: ["test", "test 2 ", "test 3", "test 4"],
@@ -249,7 +240,7 @@ export default {
           test1: "test 1",
           test2: "test 2",
           test3: "test 3",
-        }
+        },
       },
     };
   },

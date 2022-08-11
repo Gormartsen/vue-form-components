@@ -1,15 +1,17 @@
 <style lang="scss"></style>
 <template>
-<div class="form-check">
-  <input
-    :id="formId"
-    ref="input"
-    :class="inputClasses"
-    type="checkbox"
-    v-model="text"
-  />
-  <label v-if="label" :for="formId" class="form-check-label">{{ label }}</label>
-</div>
+  <div class="form-check">
+    <input
+      :id="formId"
+      ref="input"
+      :class="inputClasses"
+      type="checkbox"
+      v-model="text"
+    />
+    <label v-if="label" :for="formId" class="form-check-label">{{
+      label
+    }}</label>
+  </div>
 </template>
 <script setup>
 import { getFormItemId } from "../id-generator";
@@ -32,8 +34,6 @@ defineProps({
 });
 </script>
 <script>
-
-
 export default {
   // Properties returned from data() become reactive state
   // and will be exposed on `this`.
@@ -69,7 +69,7 @@ export default {
   },
   created: function () {
     this.formId = getFormItemId(this.type, this.id);
-    if(this.modelValue) {
+    if (this.modelValue) {
       this.text = true;
     } else {
       this.$emit("update:modelValue", false);
