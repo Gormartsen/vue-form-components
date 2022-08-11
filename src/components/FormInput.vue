@@ -28,7 +28,7 @@
   </div>
 </template>
 <script setup>
-import { getFormItemId } from "../id-generator";
+import { getFormItemId } from "./id-generator";
 defineProps({
   label: {
     required: false,
