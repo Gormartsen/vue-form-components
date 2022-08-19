@@ -93,6 +93,7 @@ export default {
       describedby: undefined,
     };
   },
+  emits: ['focusout', "keyup", "update:modelValue"],
   computed: {
     inputType: function () {
       var defaultType = "text";
