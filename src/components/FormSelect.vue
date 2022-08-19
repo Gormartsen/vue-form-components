@@ -19,42 +19,8 @@
     {{ describe }}
   </div>
 </template>
-<script setup>
-import { getFormItemId } from "./id-generator";
-defineProps({
-  label: {
-    required: false,
-  },
-  size: {
-    required: false,
-  },
-  describe: {
-    required: false,
-  },
-  multiple: {
-    required: false,
-  },
-  id: {
-    required: false,
-  },
-  disabled: {
-    required: false,
-  },
-  readonly: {
-    required: false,
-  },
-  value: {
-    required: false,
-  },
-  options: {
-    required: true,
-  },
-  modelValue: {
-    required: false,
-  },
-});
-</script>
 <script>
+import { getFormItemId } from "./id-generator";
 var acceptedSizes = ["lg", "sm"];
 
 export default {
@@ -67,6 +33,8 @@ export default {
       type: "select",
     };
   },
+  props: ["label", "size", "describe", "multiple", "id", "disabled", "readonly", "value", "options", "modelValue"],
+  emits: ["update:modelValue"],
   computed: {
     describedby: function () {
       if (!this.describe) {

@@ -15,31 +15,8 @@
     <label :for="getRadioId(index)" class="form-check-label">{{ item }}</label>
   </div>
 </template>
-<script setup>
-import { getFormItemId } from "./id-generator";
-
-defineProps({
-  id: {
-    required: false,
-  },
-  disabled: {
-    required: false,
-  },
-  readonly: {
-    required: false,
-  },
-  value: {
-    required: false,
-  },
-  options: {
-    required: true,
-  },
-  modelValue: {
-    required: false,
-  },
-});
-</script>
 <script>
+import { getFormItemId } from "./id-generator";
 var FormRadiosID = -1;
 var RadioName = function () {
   var name = "form-radio";
@@ -63,6 +40,8 @@ export default {
       generatedIds: {}
     };
   },
+  props: ["id", "disabled", "readonly", "value", "options", "modelValue"],
+  emits: ["update:modelValue"],
   computed: {
   },
   watch: {

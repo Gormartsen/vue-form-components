@@ -13,36 +13,9 @@
 />
     
 </template>
-<script setup>
-import { getFormItemId } from "./id-generator";
-defineProps({
-  label: {
-    required: false,
-  },
-  id: {
-    required: false,
-  },
-  min: {
-    required: false,
-  },
-  max: {
-    required: false,
-  },
-  step: {
-    required: false,
-  },
-  disabled: {
-    required: false,
-  },
-  value: {
-    required: false,
-  },
-  modelValue: {
-    required: false,
-  },
-});
-</script>
+
 <script>
+import { getFormItemId } from "./id-generator";
 export default {
   // Properties returned from data() become reactive state
   // and will be exposed on `this`.
@@ -53,6 +26,8 @@ export default {
       type: "range",
     };
   },
+  props: ["label", "id", "min", "max", "step", "disabled", "value", "modelValue"],
+  emits: ["update:modelValue"],
   computed: {
     inputClasses: function () {
       var classes = "form-range";

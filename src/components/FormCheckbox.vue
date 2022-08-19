@@ -13,27 +13,8 @@
     }}</label>
   </div>
 </template>
-<script setup>
-import { getFormItemId } from "./id-generator";
-defineProps({
-  label: {
-    required: false,
-  },
-  id: {
-    required: false,
-  },
-  disabled: {
-    required: false,
-  },
-  value: {
-    required: false,
-  },
-  modelValue: {
-    required: false,
-  },
-});
-</script>
 <script>
+import { getFormItemId } from "./id-generator";
 export default {
   // Properties returned from data() become reactive state
   // and will be exposed on `this`.
@@ -44,6 +25,8 @@ export default {
       type: "checkbox",
     };
   },
+  props: ["label", "id","disabled", "value", "modelValue"],
+  emits: ["update:modelValue"],
   computed: {
     inputClasses: function () {
       var classes = "form-check-input";

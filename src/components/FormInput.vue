@@ -30,54 +30,8 @@
     {{ describe }}
   </div>
 </template>
-<script setup>
-import { getFormItemId } from "./id-generator";
-defineProps({
-  label: {
-    required: false,
-  },
-  size: {
-    required: false,
-  },
-  type: {
-    required: false,
-  },
-  placeholder: {
-    required: false,
-  },
-  describe: {
-    required: false,
-  },
-  id: {
-    required: false,
-  },
-  disabled: {
-    required: false,
-  },
-  rows: {
-    required: false,
-  },
-  readonly: {
-    required: false,
-  },
-  value: {
-    required: false,
-  },
-  modelValue: {
-    required: false,
-  },
-  "aria-label": {
-    required: false,
-  },
-  "aria-describedby": {
-    required: false,
-  },
-  autofocus: {
-    required: false,
-  }
-});
-</script>
 <script>
+import { getFormItemId } from "./id-generator";
 var acceptedSizes = ["lg", "sm"];
 var acceptedTypes = ["text", "email", "file", "password", "textarea", "color"];
 
@@ -93,6 +47,7 @@ export default {
       describedby: undefined,
     };
   },
+  props: ["label", "size", "type", "placeholder", "describe", "id", "disabled", "rows", "readonly", "value", "modelValue", "aria-label", "aria-describedby", "autofocus"],
   emits: ['focusout', "keyup", "update:modelValue"],
   computed: {
     inputType: function () {
