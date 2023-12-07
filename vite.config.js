@@ -5,6 +5,16 @@ import vue from "@vitejs/plugin-vue";
 import commonjs from "rollup-plugin-commonjs";
 import externalGlobals from "rollup-plugin-external-globals";
 
+function camelize(str) {
+  let arr = str.split("-");
+  let capital = arr.map(
+    (item) => item.charAt(0).toUpperCase() + item.slice(1).toLowerCase()
+  );
+  return capital.join("");
+}
+
+let packageExportName = camelize("vue-form-components");
+
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [vue()],
@@ -17,25 +27,19 @@ export default defineConfig({
   build: {
     lib: {
       entry: "index.js",
-      name: "VueFormComponents",
+      name: packageExportName,
       // the proper extensions will be added
       fileName: "vue-form-components",
     },
     rollupOptions: {
       // make sure to externalize deps that shouldn't be bundled
       // into your library
-      plugins: [
-        commonjs(),
-        externalGlobals({
-          vue: "Vue",
-          "vue-router": "VueRouter",
-        }),
-      ],
+      external: ["vue"],
       output: {
-        format: "es",
+        // Provide global variables to use in the UMD build
+        // for externalized deps
         globals: {
           vue: "Vue",
-          "vue-router": "VueRouter",
         },
       },
     },

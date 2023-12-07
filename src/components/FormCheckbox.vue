@@ -25,7 +25,7 @@ export default {
       type: "checkbox",
     };
   },
-  props: ["label", "id","disabled", "value", "modelValue"],
+  props: ["label", "id", "disabled", "value", "modelValue"],
   emits: ["update:modelValue"],
   computed: {
     inputClasses: function () {

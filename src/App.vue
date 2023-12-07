@@ -9,31 +9,31 @@
         <fieldset>
           <div><label>No Label Control</label></div>
           <pre>{{ formControl }}</pre>
-          <form-input v-model="formControl.noTitle" />
-          <form-input
+          <FormInput v-model="formControl.noTitle" />
+          <FormInput
             label="Input Example Small"
             size="sm"
             v-model="formControl.inputSmall"
           />
-          <form-input label="Input Example" />
-          <form-input label="Input Example Large" size="lg" />
-          <form-input
+          <FormInput label="Input Example" />
+          <FormInput label="Input Example Large" size="lg" />
+          <FormInput
             label="Input Example with Placeholder"
             placeholder="placeholder: Please provide something"
           />
-          <form-input
+          <FormInput
             label="Input Example with description"
             describe="input describe"
           />
-          <form-input label="Disabled Input Example" :disabled="true" />
-          <form-input
+          <FormInput label="Disabled Input Example" :disabled="true" />
+          <FormInput
             label="readonly Input Example"
             :readonly="true"
             value="readonly text"
           />
-          <form-input label="ID Input Example" id="my-custom-id" />
-          <form-input label="ID Input Example second" id="my-custom-id" />
-          <form-input
+          <FormInput label="ID Input Example" id="my-custom-id" />
+          <FormInput label="ID Input Example second" id="my-custom-id" />
+          <FormInput
             :label="'Text area'"
             :type="'textarea'"
             v-model="formControl.textarea"
@@ -41,17 +41,17 @@
           />
           <div class="input-group mb-3">
             <span class="input-group-text" id="basic-addon1">@</span>
-            <form-input placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" />
+            <FormInput placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" />
           </div>
         </fieldset>
         <fieldset>
           <pre>{{ formControl }}</pre>
-          <form-input
+          <FormInput
             :label="'Input file'"
             :type="'file'"
             v-model="formControl.file"
           />
-          <form-input
+          <FormInput
             :label="'Input Color'"
             :type="'color'"
             v-model="formControl.color"
@@ -64,36 +64,36 @@
         <h2># Form Select</h2>
         <fieldset>
           <pre>{{ select }}</pre>
-          <form-select
+          <FormSelect
             :label="'select array'"
             :size="'sm'"
             :options="formSelectOptions.array"
             v-model="select.select1"
           />
-          <form-select
+          <FormSelect
             :label="'select Color'"
             :size="'lg'"
             :options="formSelectOptions.array"
             v-model="select.select1"
           />
-          <form-select
+          <FormSelect
             :label="'select Color'"
             :disabled="true"
             :options="formSelectOptions.array"
             v-model="select.select1"
           />
-          <form-select
+          <FormSelect
             :describe="'select Object'"
             :options="formSelectOptions.object"
             v-model="select.select2"
           />
-          <form-select
+          <FormSelect
             :describe="'select Color'"
             :multiple="true"
             :options="formSelectOptions.array"
             v-model="select.selectMultiple"
           />
-          <form-select
+          <FormSelect
             :describe="'select Color'"
             :multiple="true"
             :options="formSelectOptions.object"
@@ -107,29 +107,29 @@
         <h2># Form Checkbox</h2>
         <fieldset>
           <pre>{{ checkbox }}</pre>
-          <form-checkbox v-model="checkbox.checkbox1" />
+          <FormCheckbox v-model="checkbox.checkbox1" />
           <span>Some text</span>
-          <form-checkbox v-model="checkbox.checkbox2" class="form-switch" />
-          <form-checkbox v-model="checkbox.checkbox3" class="btn-check" />
+          <FormCheckbox v-model="checkbox.checkbox2" class="form-switch" />
+          <FormCheckbox v-model="checkbox.checkbox3" class="btn-check" />
 
-          <form-checkbox
+          <FormCheckbox
             :label="'select true/false'"
             v-model="checkbox.checkbox4"
           />
 
-          <form-checkbox
+          <FormCheckbox
             :label="'select true/false'"
             :disabled="true"
             v-model="checkbox.checkbox1"
           />
           <div>
-            <form-checkbox
+            <FormCheckbox
               :label="'select true/false'"
               v-model="checkbox.checkbox2"
               class="form-check-inline"
             />
 
-            <form-checkbox
+            <FormCheckbox
               :label="'select true/false'"
               :disabled="true"
               class="form-check-inline"
@@ -137,13 +137,13 @@
             />
           </div>
           <div>
-            <form-checkbox
+            <FormCheckbox
               :label="'select true/false'"
               v-model="checkbox.checkbox4"
               class="form-switch"
             />
 
-            <form-checkbox
+            <FormCheckbox
               :label="'select true/false'"
               :disabled="true"
               class="form-switch"
@@ -159,32 +159,32 @@
         <fieldset>
           <pre>{{ formRadio }}</pre>
           <div class="form-control">
-            <form-radio
+            <FormRadio
               :options="formRadioOptions.array"
               v-model="formRadio.radio1"
             />
           </div>
           <div class="form-control">
-            <form-radio
+            <FormRadio
               :options="formRadioOptions.object"
               v-model="formRadio.radio2"
             />
           </div>
           <div class="form-control">
-            <form-radio
+            <FormRadio
               :options="formRadioOptions.object"
               v-model="formRadio.radio3"
               :disabled="['test2']"
             />
           </div>
           <div class="form-control">
-            <form-radio
+            <FormRadio
               :options="formRadioOptions.array"
               v-model="formRadio.radio4"
             />
           </div>
           <div class="form-control">
-            <form-radio
+            <FormRadio
               :disabled="[0, 3]"
               :options="formRadioOptions.array"
               v-model="formRadio.radio5"
@@ -199,25 +199,25 @@
         <fieldset>
           <pre>{{ formRange }}</pre>
           <div class="form-control">
-            <form-range
+            <FormRange
               v-model="formRange.range1"
             />
           </div>
           <div class="form-control">
-            <form-range
+            <FormRange
               :label="'range 2'"
               v-model="formRange.range2"
             />
           </div>
           <div class="form-control">
-            <form-range
+            <FormRange
               :label="'range 3'"
               v-model="formRange.range3"
               :disabled="true"
             />
           </div>
           <div class="form-control">
-            <form-range
+            <FormRange
               :label="'range 4'"
               v-model="formRange.range4"
               :min="0"
@@ -226,7 +226,7 @@
             />
           </div>
           <div class="form-control">
-            <form-range
+            <FormRange
               :label="'range 5'"
               v-model="formRange.range5"
               :min="0"
@@ -241,9 +241,21 @@
 </template>
 <script setup></script>
 <script>
+import {FormInput,
+  FormSelect,
+  FormCheckbox,
+  FormRadio,
+  FormRange} from "../index"
 export default {
   // Properties returned from data() become reactive state
   // and will be exposed on `this`.
+  components: {
+    FormInput,
+    FormSelect,
+    FormCheckbox,
+    FormRadio,
+    FormRange
+  },
   data() {
     return {
       formControl: {

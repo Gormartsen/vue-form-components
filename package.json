@@ -1,19 +1,26 @@
 {
   "name": "vue-form-components",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Vue 3 form components based on Bootstrap 5.1",
-  "type": "module",
   "files": [
+    "dist",
     "index.js",
     "src/components",
     "LICENSE.txt"
   ],
-  "main": "index.js",
+  "main": "./dist/vue-form-components.umd.cjs",
+  "module": "./dist/vue-form-components.mjs",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview --port 4173",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore"
+  },
+  "exports": {
+    ".": {
+      "import": "./dist/vue-form-components.mjs",
+      "require": "./dist/vue-form-components.umd.cjs"
+    }
   },
   "repository": {
     "type": "git",
@@ -33,7 +40,7 @@
   "homepage": "https://github.com/Gormartsen/vue-form-components#readme",
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.1.0",
-    "@vitejs/plugin-vue": "^2.3.3",
+    "@vitejs/plugin-vue": "^3.0.1",
     "@vue/eslint-config-prettier": "^7.0.0",
     "eslint": "^8.5.0",
     "eslint-plugin-vue": "^9.0.0",
@@ -41,6 +48,7 @@
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-external-globals": "^0.6.1",
     "sass": "^1.53.0",
-    "vite": "^2.9.12"
+    "vite": "^3.0.2",
+    "vue": "^3.3.10"
   }
 }
