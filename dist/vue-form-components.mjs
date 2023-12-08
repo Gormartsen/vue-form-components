@@ -10,6 +10,8 @@ const m = function(e, s) {
 };
 var w = ["lg", "sm"], D = ["text", "email", "file", "password", "textarea", "color"];
 const R = {
+  // Properties returned from data() become reactive state
+  // and will be exposed on `this`.
   data() {
     return {
       formId: "",
@@ -38,7 +40,7 @@ const R = {
     }
   },
   updated: function() {
-    this.disabled ? this.$refs.input.disabled = !0 : this.$refs.input.disabled = !1, this.modelValue !== void 0 && (this.text = this.modelValue);
+    this.disabled ? this.$refs.input.disabled = !0 : this.$refs.input.disabled = !1, this.modelValue !== void 0 && this.text != this.modelValue && (this.text = this.modelValue);
   },
   created: function() {
     this.formId = m(this.inputType, this.id), this.text = this.modelValue, this.type == "textarea" && (this.inputTypeTag = "textarea"), this.value && (this.text = this.value), this.ariaLabel && (this.arialabel = this.ariaLabel), this.ariaDescribedby && (this.describedby = this.ariaDescribedby), this.describe && (this.describedby = this.formId + "-described");
@@ -93,6 +95,8 @@ function B(e, s, i, f, t, d) {
 const re = /* @__PURE__ */ y(R, [["render", B]]);
 var L = ["lg", "sm"];
 const N = {
+  // Properties returned from data() become reactive state
+  // and will be exposed on `this`.
   data() {
     return {
       formId: "",
@@ -104,7 +108,7 @@ const N = {
   emits: ["update:modelValue"],
   computed: {
     describedby: function() {
-      if (!!this.describe)
+      if (this.describe)
         return this.formId + "-described";
     },
     inputClasses: function() {
@@ -158,6 +162,8 @@ function G(e, s, i, f, t, d) {
   ], 64);
 }
 const de = /* @__PURE__ */ y(N, [["render", G]]), H = {
+  // Properties returned from data() become reactive state
+  // and will be exposed on `this`.
   data() {
     return {
       formId: "",
@@ -212,6 +218,8 @@ var v = -1, W = function() {
   return v == -1 ? (v++, e) : (v++, e + "-" + v);
 };
 const X = {
+  // Properties returned from data() become reactive state
+  // and will be exposed on `this`.
   data() {
     return {
       formId: "",
@@ -234,7 +242,7 @@ const X = {
       return this.generatedIds[e] ? this.generatedIds[e] : (this.generatedIds[e] = m("radio"), this.generatedIds[e]);
     },
     IsDisabled: function(e) {
-      if (!!this.disabled && !!this.disabled.indexOf && this.disabled.indexOf(e) !== -1)
+      if (this.disabled && this.disabled.indexOf && this.disabled.indexOf(e) !== -1)
         return !0;
     }
   },
@@ -273,6 +281,8 @@ function $(e, s, i, f, t, d) {
   ]))), 128);
 }
 const ne = /* @__PURE__ */ y(X, [["render", $]]), ee = {
+  // Properties returned from data() become reactive state
+  // and will be exposed on `this`.
   data() {
     return {
       formId: "",
