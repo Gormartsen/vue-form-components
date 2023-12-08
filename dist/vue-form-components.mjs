@@ -1,4 +1,4 @@
-import { openBlock as l, createElementBlock as r, Fragment as h, toDisplayString as u, createCommentVNode as o, withDirectives as c, normalizeClass as b, vModelDynamic as T, vModelText as V, createElementVNode as p, renderList as k, vModelSelect as C, vModelCheckbox as z, vModelRadio as F } from "vue";
+import { openBlock as l, createElementBlock as d, Fragment as h, toDisplayString as u, createCommentVNode as o, withDirectives as c, normalizeClass as b, vModelDynamic as T, vModelText as V, createElementVNode as p, renderList as k, vModelSelect as C, vModelCheckbox as z, vModelRadio as F } from "vue";
 var I = 0, x = {}, _ = {};
 const m = function(e, s) {
   return s !== void 0 ? _[s] === void 0 ? (_[s] = 0, s) : (_[s]++, s + "-" + _[s]) : e !== void 0 ? x[e] === void 0 ? (x[e] = 0, "form-id-" + e) : (x[e]++, "form-id-" + e + "-" + x[e]) : (I++, "form-id-" + I);
@@ -36,7 +36,8 @@ const R = {
   },
   watch: {
     text: function(e) {
-      return this.$emit("update:modelValue", e);
+      if (e != null)
+        return this.$emit("update:modelValue", e);
     }
   },
   updated: function() {
@@ -49,21 +50,21 @@ const R = {
     this.disabled && (this.$refs.input.disabled = !0), this.autofocus && this.$refs.input.focus();
   }
 }, O = ["for"], U = ["id", "placeholder", "aria-describedby", "type", "readonly", "aria-label"], M = ["id", "placeholder", "aria-describedby", "aria-label", "rows", "readonly"], S = ["id"];
-function B(e, s, i, f, t, d) {
-  return l(), r(h, null, [
-    i.label ? (l(), r("label", {
+function B(e, s, i, f, t, r) {
+  return l(), d(h, null, [
+    i.label ? (l(), d("label", {
       key: 0,
       for: t.formId,
       class: "form-label"
     }, u(i.label), 9, O)) : o("", !0),
-    t.inputTypeTag == "input" ? c((l(), r("input", {
+    t.inputTypeTag == "input" ? c((l(), d("input", {
       key: 1,
       id: t.formId,
       ref: "input",
-      class: b(d.inputClasses),
+      class: b(r.inputClasses),
       placeholder: i.placeholder,
       "aria-describedby": t.describedby,
-      type: d.inputType,
+      type: r.inputType,
       readonly: i.readonly,
       "onUpdate:modelValue": s[0] || (s[0] = (a) => t.text = a),
       "aria-label": t.arialabel,
@@ -71,11 +72,11 @@ function B(e, s, i, f, t, d) {
     }, null, 42, U)), [
       [T, t.text]
     ]) : o("", !0),
-    t.inputTypeTag == "textarea" ? c((l(), r("textarea", {
+    t.inputTypeTag == "textarea" ? c((l(), d("textarea", {
       key: 2,
       id: t.formId,
       ref: "input",
-      class: b(d.inputClasses),
+      class: b(r.inputClasses),
       placeholder: i.placeholder,
       "aria-describedby": t.describedby,
       "aria-label": t.arialabel,
@@ -85,14 +86,14 @@ function B(e, s, i, f, t, d) {
     }, null, 10, M)), [
       [V, t.text]
     ]) : o("", !0),
-    i.describe ? (l(), r("div", {
+    i.describe ? (l(), d("div", {
       key: 3,
       id: t.formId + "-described",
       class: "form-text"
     }, u(i.describe), 9, S)) : o("", !0)
   ], 64);
 }
-const re = /* @__PURE__ */ y(R, [["render", B]]);
+const de = /* @__PURE__ */ y(R, [["render", B]]);
 var L = ["lg", "sm"];
 const N = {
   // Properties returned from data() become reactive state
@@ -131,9 +132,9 @@ const N = {
     this.disabled && (this.$refs.input.disabled = !0);
   }
 }, E = ["for"], j = ["id", "aria-describedby", "readonly", "multiple"], q = ["value"], A = ["id"];
-function G(e, s, i, f, t, d) {
-  return l(), r(h, null, [
-    i.label ? (l(), r("label", {
+function G(e, s, i, f, t, r) {
+  return l(), d(h, null, [
+    i.label ? (l(), d("label", {
       key: 0,
       for: t.formId,
       class: "form-label"
@@ -141,27 +142,27 @@ function G(e, s, i, f, t, d) {
     c(p("select", {
       id: t.formId,
       ref: "input",
-      class: b(d.inputClasses),
-      "aria-describedby": d.describedby,
+      class: b(r.inputClasses),
+      "aria-describedby": r.describedby,
       readonly: i.readonly,
       "onUpdate:modelValue": s[0] || (s[0] = (a) => t.text = a),
       multiple: i.multiple
     }, [
-      (l(!0), r(h, null, k(i.options, (a, n) => (l(), r("option", {
+      (l(!0), d(h, null, k(i.options, (a, n) => (l(), d("option", {
         key: n,
         value: n
       }, u(a), 9, q))), 128))
     ], 10, j), [
       [C, t.text]
     ]),
-    i.describe ? (l(), r("div", {
+    i.describe ? (l(), d("div", {
       key: 1,
       id: t.formId + "-described",
       class: "form-text"
     }, u(i.describe), 9, A)) : o("", !0)
   ], 64);
 }
-const de = /* @__PURE__ */ y(N, [["render", G]]), H = {
+const re = /* @__PURE__ */ y(N, [["render", G]]), H = {
   // Properties returned from data() become reactive state
   // and will be exposed on `this`.
   data() {
@@ -194,18 +195,18 @@ const de = /* @__PURE__ */ y(N, [["render", G]]), H = {
     this.disabled && (this.$refs.input.disabled = !0);
   }
 }, J = { class: "form-check" }, K = ["id"], P = ["for"];
-function Q(e, s, i, f, t, d) {
-  return l(), r("div", J, [
+function Q(e, s, i, f, t, r) {
+  return l(), d("div", J, [
     c(p("input", {
       id: t.formId,
       ref: "input",
-      class: b(d.inputClasses),
+      class: b(r.inputClasses),
       type: "checkbox",
       "onUpdate:modelValue": s[0] || (s[0] = (a) => t.text = a)
     }, null, 10, K), [
       [z, t.text]
     ]),
-    i.label ? (l(), r("label", {
+    i.label ? (l(), d("label", {
       key: 0,
       for: t.formId,
       class: "form-check-label"
@@ -255,13 +256,13 @@ const X = {
   mounted: function() {
   }
 }, Y = ["id", "readonly", "value", "name", "disabled"], Z = ["for"];
-function $(e, s, i, f, t, d) {
-  return l(!0), r(h, null, k(i.options, (a, n) => (l(), r("div", {
+function $(e, s, i, f, t, r) {
+  return l(!0), d(h, null, k(i.options, (a, n) => (l(), d("div", {
     class: "form-check",
     key: n
   }, [
     c(p("input", {
-      id: d.getRadioId(n),
+      id: r.getRadioId(n),
       ref_for: !0,
       ref: "input",
       class: "form-check-input",
@@ -270,12 +271,12 @@ function $(e, s, i, f, t, d) {
       value: n,
       name: t.name,
       type: "radio",
-      disabled: d.IsDisabled(n)
+      disabled: r.IsDisabled(n)
     }, null, 8, Y), [
       [F, t.selected]
     ]),
     p("label", {
-      for: d.getRadioId(n),
+      for: r.getRadioId(n),
       class: "form-check-label"
     }, u(a), 9, Z)
   ]))), 128);
@@ -313,9 +314,9 @@ const ne = /* @__PURE__ */ y(X, [["render", $]]), ee = {
     this.disabled && (this.$refs.input.disabled = !0);
   }
 }, te = ["for"], ie = ["id", "min", "max", "step"];
-function se(e, s, i, f, t, d) {
-  return l(), r(h, null, [
-    i.label ? (l(), r("label", {
+function se(e, s, i, f, t, r) {
+  return l(), d(h, null, [
+    i.label ? (l(), d("label", {
       key: 0,
       for: t.formId,
       class: "form-check-label"
@@ -323,7 +324,7 @@ function se(e, s, i, f, t, d) {
     c(p("input", {
       id: t.formId,
       ref: "input",
-      class: b(d.inputClasses),
+      class: b(r.inputClasses),
       type: "range",
       "onUpdate:modelValue": s[0] || (s[0] = (a) => t.text = a),
       min: i.min,
@@ -337,8 +338,8 @@ function se(e, s, i, f, t, d) {
 const oe = /* @__PURE__ */ y(ee, [["render", se]]);
 export {
   ae as FormCheckbox,
-  re as FormInput,
+  de as FormInput,
   ne as FormRadio,
   oe as FormRange,
-  de as FormSelect
+  re as FormSelect
 };
