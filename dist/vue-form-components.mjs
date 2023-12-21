@@ -1,15 +1,15 @@
-import { openBlock as l, createElementBlock as d, Fragment as m, toDisplayString as u, createCommentVNode as o, withDirectives as c, normalizeClass as b, vModelDynamic as T, vModelText as I, createElementVNode as p, renderList as k, vModelSelect as C, vModelCheckbox as z, vModelRadio as F } from "vue";
-var V = 0, x = {}, _ = {};
+import { openBlock as l, createElementBlock as d, Fragment as m, toDisplayString as u, createCommentVNode as o, withDirectives as c, normalizeClass as b, vModelDynamic as T, vModelText as V, createElementVNode as p, renderList as k, vModelSelect as C, vModelCheckbox as z, vModelRadio as F } from "vue";
+var I = 0, x = {}, _ = {};
 const h = function(e, s) {
-  return s !== void 0 ? _[s] === void 0 ? (_[s] = 0, s) : (_[s]++, s + "-" + _[s]) : e !== void 0 ? x[e] === void 0 ? (x[e] = 0, "form-id-" + e) : (x[e]++, "form-id-" + e + "-" + x[e]) : (V++, "form-id-" + V);
+  return s !== void 0 ? _[s] === void 0 ? (_[s] = 0, s) : (_[s]++, s + "-" + _[s]) : e !== void 0 ? x[e] === void 0 ? (x[e] = 0, "form-id-" + e) : (x[e]++, "form-id-" + e + "-" + x[e]) : (I++, "form-id-" + I);
 }, y = (e, s) => {
   const i = e.__vccOpts || e;
   for (const [f, t] of s)
     i[f] = t;
   return i;
 };
-var w = ["lg", "sm"], D = ["text", "email", "file", "password", "textarea", "color"];
-const R = {
+var D = ["lg", "sm"], R = ["text", "email", "file", "password", "textarea", "color"];
+const w = {
   // Properties returned from data() become reactive state
   // and will be exposed on `this`.
   data() {
@@ -27,11 +27,11 @@ const R = {
     inputType: function() {
       var e = "text";
       if (this.type != "textarea")
-        return this.type && D.indexOf(this.type) !== -1 && (e = this.type), e;
+        return this.type && R.indexOf(this.type) !== -1 && (e = this.type), e;
     },
     inputClasses: function() {
       var e = "form-control";
-      return this.readonly && (e = "form-control-plaintext"), this.type == "color" && (e = "form-control form-control-color"), this.size && w.indexOf(this.size) !== -1 && (e = e + " form-control-" + this.size), e;
+      return this.readonly && (e = "form-control-plaintext"), this.type == "color" && (e = "form-control form-control-color"), this.size && D.indexOf(this.size) !== -1 && (e = e + " form-control-" + this.size), e;
     }
   },
   watch: {
@@ -84,7 +84,7 @@ function B(e, s, i, f, t, r) {
       rows: i.rows,
       readonly: i.readonly
     }, null, 10, M)), [
-      [I, t.text]
+      [V, t.text]
     ]) : o("", !0),
     i.describe ? (l(), d("div", {
       key: 3,
@@ -93,7 +93,7 @@ function B(e, s, i, f, t, r) {
     }, u(i.describe), 9, S)) : o("", !0)
   ], 64);
 }
-const de = /* @__PURE__ */ y(R, [["render", B]]);
+const de = /* @__PURE__ */ y(w, [["render", B]]);
 var L = ["lg", "sm"];
 const N = {
   // Properties returned from data() become reactive state
@@ -119,7 +119,8 @@ const N = {
   },
   watch: {
     text: function(e) {
-      return this.$emit("update:modelValue", e);
+      if (e != null)
+        return this.$emit("update:modelValue", e);
     }
   },
   updated: function() {
@@ -331,7 +332,7 @@ function se(e, s, i, f, t, r) {
       max: i.max,
       step: i.step
     }, null, 10, ie), [
-      [I, t.text]
+      [V, t.text]
     ])
   ], 64);
 }

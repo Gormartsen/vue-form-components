@@ -61,7 +61,9 @@ export default {
   },
   watch: {
     text: function (newValue) {
-      return this.$emit("update:modelValue", newValue);
+      if(newValue != undefined) {
+        return this.$emit("update:modelValue", newValue);
+      }
     },
   },
   updated: function () {
