@@ -1,7 +1,7 @@
-import { openBlock as l, createElementBlock as d, Fragment as h, toDisplayString as u, createCommentVNode as o, withDirectives as c, normalizeClass as b, vModelDynamic as T, vModelText as V, createElementVNode as p, renderList as k, vModelSelect as C, vModelCheckbox as z, vModelRadio as F } from "vue";
-var I = 0, x = {}, _ = {};
-const m = function(e, s) {
-  return s !== void 0 ? _[s] === void 0 ? (_[s] = 0, s) : (_[s]++, s + "-" + _[s]) : e !== void 0 ? x[e] === void 0 ? (x[e] = 0, "form-id-" + e) : (x[e]++, "form-id-" + e + "-" + x[e]) : (I++, "form-id-" + I);
+import { openBlock as l, createElementBlock as d, Fragment as m, toDisplayString as u, createCommentVNode as o, withDirectives as c, normalizeClass as b, vModelDynamic as T, vModelText as I, createElementVNode as p, renderList as k, vModelSelect as C, vModelCheckbox as z, vModelRadio as F } from "vue";
+var V = 0, x = {}, _ = {};
+const h = function(e, s) {
+  return s !== void 0 ? _[s] === void 0 ? (_[s] = 0, s) : (_[s]++, s + "-" + _[s]) : e !== void 0 ? x[e] === void 0 ? (x[e] = 0, "form-id-" + e) : (x[e]++, "form-id-" + e + "-" + x[e]) : (V++, "form-id-" + V);
 }, y = (e, s) => {
   const i = e.__vccOpts || e;
   for (const [f, t] of s)
@@ -44,14 +44,14 @@ const R = {
     this.disabled ? this.$refs.input.disabled = !0 : this.$refs.input.disabled = !1, this.modelValue !== void 0 && this.text != this.modelValue && (this.text = this.modelValue);
   },
   created: function() {
-    this.formId = m(this.inputType, this.id), this.text = this.modelValue, this.type == "textarea" && (this.inputTypeTag = "textarea"), this.value && (this.text = this.value), this.ariaLabel && (this.arialabel = this.ariaLabel), this.ariaDescribedby && (this.describedby = this.ariaDescribedby), this.describe && (this.describedby = this.formId + "-described");
+    this.formId = h(this.inputType, this.id), this.text = this.modelValue, this.type == "textarea" && (this.inputTypeTag = "textarea"), this.value && (this.text = this.value), this.ariaLabel && (this.arialabel = this.ariaLabel), this.ariaDescribedby && (this.describedby = this.ariaDescribedby), this.describe && (this.describedby = this.formId + "-described");
   },
   mounted: function() {
     this.disabled && (this.$refs.input.disabled = !0), this.autofocus && this.$refs.input.focus();
   }
 }, O = ["for"], U = ["id", "placeholder", "aria-describedby", "type", "readonly", "aria-label"], M = ["id", "placeholder", "aria-describedby", "aria-label", "rows", "readonly"], S = ["id"];
 function B(e, s, i, f, t, r) {
-  return l(), d(h, null, [
+  return l(), d(m, null, [
     i.label ? (l(), d("label", {
       key: 0,
       for: t.formId,
@@ -84,7 +84,7 @@ function B(e, s, i, f, t, r) {
       rows: i.rows,
       readonly: i.readonly
     }, null, 10, M)), [
-      [V, t.text]
+      [I, t.text]
     ]) : o("", !0),
     i.describe ? (l(), d("div", {
       key: 3,
@@ -123,17 +123,17 @@ const N = {
     }
   },
   updated: function() {
-    this.disabled ? this.$refs.input.disabled = !0 : this.$refs.input.disabled = !1, this.modelValue !== void 0 && (this.text = this.modelValue);
+    this.disabled ? this.$refs.input.disabled = !0 : this.$refs.input.disabled = !1, this.modelValue !== void 0 && this.text != this.modelValue && (this.text = this.modelValue);
   },
   created: function() {
-    this.formId = m(this.type, this.id), this.text = this.modelValue, this.value && (this.text = this.value);
+    this.formId = h(this.type, this.id), this.text = this.modelValue, this.value && (this.text = this.value);
   },
   mounted: function() {
     this.disabled && (this.$refs.input.disabled = !0);
   }
 }, E = ["for"], j = ["id", "aria-describedby", "readonly", "multiple"], q = ["value"], A = ["id"];
 function G(e, s, i, f, t, r) {
-  return l(), d(h, null, [
+  return l(), d(m, null, [
     i.label ? (l(), d("label", {
       key: 0,
       for: t.formId,
@@ -148,7 +148,7 @@ function G(e, s, i, f, t, r) {
       "onUpdate:modelValue": s[0] || (s[0] = (a) => t.text = a),
       multiple: i.multiple
     }, [
-      (l(!0), d(h, null, k(i.options, (a, n) => (l(), d("option", {
+      (l(!0), d(m, null, k(i.options, (a, n) => (l(), d("option", {
         key: n,
         value: n
       }, u(a), 9, q))), 128))
@@ -189,7 +189,7 @@ const re = /* @__PURE__ */ y(N, [["render", G]]), H = {
     this.disabled ? this.$refs.input.disabled = !0 : this.$refs.input.disabled = !1, this.modelValue ? this.text = !0 : this.text = !1;
   },
   created: function() {
-    this.formId = m(this.type, this.id), this.modelValue ? this.text = !0 : this.$emit("update:modelValue", !1), this.value && (this.text = !0);
+    this.formId = h(this.type, this.id), this.modelValue ? this.text = !0 : this.$emit("update:modelValue", !1), this.value && (this.text = !0);
   },
   mounted: function() {
     this.disabled && (this.$refs.input.disabled = !0);
@@ -240,7 +240,7 @@ const X = {
   },
   methods: {
     getRadioId: function(e) {
-      return this.generatedIds[e] ? this.generatedIds[e] : (this.generatedIds[e] = m("radio"), this.generatedIds[e]);
+      return this.generatedIds[e] ? this.generatedIds[e] : (this.generatedIds[e] = h("radio"), this.generatedIds[e]);
     },
     IsDisabled: function(e) {
       if (this.disabled && this.disabled.indexOf && this.disabled.indexOf(e) !== -1)
@@ -248,16 +248,16 @@ const X = {
     }
   },
   updated: function() {
-    this.modelValue !== void 0 && (this.selected = this.modelValue);
+    this.modelValue !== void 0 && this.text != this.modelValue && (this.selected = this.modelValue);
   },
   created: function() {
-    this.formId = m(this.type, this.id), this.name = W(), this.selected = this.modelValue, this.value && (this.selected = this.value);
+    this.formId = h(this.type, this.id), this.name = W(), this.selected = this.modelValue, this.value && (this.selected = this.value);
   },
   mounted: function() {
   }
 }, Y = ["id", "readonly", "value", "name", "disabled"], Z = ["for"];
 function $(e, s, i, f, t, r) {
-  return l(!0), d(h, null, k(i.options, (a, n) => (l(), d("div", {
+  return l(!0), d(m, null, k(i.options, (a, n) => (l(), d("div", {
     class: "form-check",
     key: n
   }, [
@@ -305,17 +305,17 @@ const ne = /* @__PURE__ */ y(X, [["render", $]]), ee = {
     }
   },
   updated: function() {
-    this.disabled ? this.$refs.input.disabled = !0 : this.$refs.input.disabled = !1, this.modelValue && (this.text = this.modelValue);
+    this.disabled ? this.$refs.input.disabled = !0 : this.$refs.input.disabled = !1, this.modelValue && this.text != this.modelValue && (this.text = this.modelValue);
   },
   created: function() {
-    this.formId = m(this.type, this.id), this.modelValue && (this.text = this.modelValue), this.value && (this.text = this.value);
+    this.formId = h(this.type, this.id), this.modelValue && (this.text = this.modelValue), this.value && (this.text = this.value);
   },
   mounted: function() {
     this.disabled && (this.$refs.input.disabled = !0);
   }
 }, te = ["for"], ie = ["id", "min", "max", "step"];
 function se(e, s, i, f, t, r) {
-  return l(), d(h, null, [
+  return l(), d(m, null, [
     i.label ? (l(), d("label", {
       key: 0,
       for: t.formId,
@@ -331,7 +331,7 @@ function se(e, s, i, f, t, r) {
       max: i.max,
       step: i.step
     }, null, 10, ie), [
-      [V, t.text]
+      [I, t.text]
     ])
   ], 64);
 }

@@ -71,7 +71,9 @@ export default {
       this.$refs["input"].disabled = false;
     }
     if (this.modelValue !== undefined) {
-      this.text = this.modelValue;
+      if(this.text != this.modelValue) {
+        this.text = this.modelValue;
+      }
     }
   },
   created: function () {

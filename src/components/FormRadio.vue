@@ -72,7 +72,9 @@ export default {
   },
   updated: function () {
     if (this.modelValue !== undefined) {
-      this.selected = this.modelValue;
+      if(this.text != this.modelValue) {
+        this.selected = this.modelValue;
+      }
     }
   },
   created: function () {
