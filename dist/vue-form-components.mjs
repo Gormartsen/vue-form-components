@@ -40,7 +40,7 @@ const D = {
     Validate: function() {
       var e = this;
       this.validationTimeOut && clearTimeout(this.validationTimeOut), this.validation && typeof this.validation == "function" && (this.validationTimeOut = setTimeout(function() {
-        e.validation(this.text, function(s) {
+        e.validation(e.text, function(s) {
           e.validationStatus = s;
         });
       }, 300));

@@ -106,7 +106,7 @@ export default {
 
       if(this.validation && typeof this.validation === 'function') {
         this.validationTimeOut = setTimeout(function(){
-          self.validation(this.text, function(status) {
+          self.validation(self.text, function(status) {
             self.validationStatus = status
           })
         }, 300)
