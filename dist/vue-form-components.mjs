@@ -8,8 +8,8 @@ const h = function(e, s) {
     i[f] = t;
   return i;
 };
-var F = ["lg", "sm"], D = ["text", "email", "file", "password", "textarea", "color"];
-const R = {
+var F = ["lg", "sm"], O = ["text", "email", "file", "password", "textarea", "color"];
+const D = {
   // Properties returned from data() become reactive state
   // and will be exposed on `this`.
   data() {
@@ -29,7 +29,7 @@ const R = {
     inputType: function() {
       var e = "text";
       if (this.type != "textarea")
-        return this.type && D.indexOf(this.type) !== -1 && (e = this.type), e;
+        return this.type && O.indexOf(this.type) !== -1 && (e = this.type), e;
     },
     inputClasses: function() {
       var e = "form-control";
@@ -39,9 +39,11 @@ const R = {
   methods: {
     Validate: function() {
       var e = this;
-      this.validation && typeof this.validation == "function" && this.validation(this.text, function(s) {
-        e.validationStatus = s;
-      });
+      this.validationTimeOut && clearTimeout(validationTimeOut), this.validation && typeof this.validation == "function" && (this.validationTimeOut = setTimeout(function() {
+        e.validation(this.text, function(s) {
+          e.validationStatus = s;
+        });
+      }, 300));
     }
   },
   watch: {
@@ -59,7 +61,7 @@ const R = {
   mounted: function() {
     this.disabled && (this.$refs.input.disabled = !0), this.autofocus && this.$refs.input.focus();
   }
-}, w = ["for"], O = ["id", "placeholder", "aria-describedby", "type", "readonly", "aria-label"], U = ["id", "placeholder", "aria-describedby", "aria-label", "rows", "readonly"], M = ["id"], B = {
+}, R = ["for"], w = ["id", "placeholder", "aria-describedby", "type", "readonly", "aria-label"], U = ["id", "placeholder", "aria-describedby", "aria-label", "rows", "readonly"], M = ["id"], B = {
   key: 4,
   class: "valid-feedback"
 }, L = {
@@ -72,7 +74,7 @@ function N(e, s, i, f, t, a) {
       key: 0,
       for: t.formId,
       class: "form-label"
-    }, o(i.label), 9, w)) : n("", !0),
+    }, o(i.label), 9, R)) : n("", !0),
     t.inputTypeTag == "input" ? c((l(), d("input", {
       key: 1,
       id: t.formId,
@@ -85,7 +87,7 @@ function N(e, s, i, f, t, a) {
       "onUpdate:modelValue": s[0] || (s[0] = (r) => t.text = r),
       "aria-label": t.arialabel,
       onFocusout: s[1] || (s[1] = (r) => e.$emit("focusout"))
-    }, null, 42, O)), [
+    }, null, 42, w)), [
       [T, t.text]
     ]) : n("", !0),
     t.inputTypeTag == "textarea" ? c((l(), d("textarea", {
@@ -111,7 +113,7 @@ function N(e, s, i, f, t, a) {
     t.validationStatus.valid ? n("", !0) : (l(), d("div", L, o(t.validationStatus.message), 1))
   ], 64);
 }
-const re = /* @__PURE__ */ y(R, [["render", N]]);
+const re = /* @__PURE__ */ y(D, [["render", N]]);
 var E = ["lg", "sm"];
 const j = {
   // Properties returned from data() become reactive state

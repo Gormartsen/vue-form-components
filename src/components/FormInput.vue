@@ -100,10 +100,16 @@ export default {
   methods: {
     Validate: function(){
       var self = this;
+      if(this.validationTimeOut) {
+        clearTimeout(validationTimeOut);
+      }
+
       if(this.validation && typeof this.validation === 'function') {
-        this.validation(this.text, function(status) {
-          self.validationStatus = status
-        })
+        this.validationTimeOut = setTimeout(function(){
+          self.validation(this.text, function(status) {
+            self.validationStatus = status
+          })
+        }, 300)
       }
     }
   },
