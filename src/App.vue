@@ -1,4 +1,6 @@
-<style lang="scss"></style>
+<style lang="scss">
+
+</style>
 <template>
   <header></header>
   <div class="container-fluid">
@@ -6,7 +8,7 @@
       <div class="col-12">
         <h2># Form Input</h2>
 
-        <fieldset>
+        <form>
           <div><label>No Label Control</label></div>
           <pre>{{ formControl }}</pre>
           <FormInput v-model="formControl.noTitle" />
@@ -26,6 +28,8 @@
             describe="input describe"
           />
           <FormInput label="Disabled Input Example" :disabled="true" />
+          <FormInput label="Extra class example" :class="{'text-danger': true}" />
+          <FormInput label="Validation example"  :validation="validateInput" />
           <FormInput
             label="readonly Input Example"
             :readonly="true"
@@ -43,7 +47,7 @@
             <span class="input-group-text" id="basic-addon1">@</span>
             <FormInput placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" />
           </div>
-        </fieldset>
+        </form>
         <fieldset>
           <pre>{{ formControl }}</pre>
           <FormInput
@@ -312,6 +316,21 @@ export default {
     };
   },
   watch: {},
+  methods: {
+    validateInput: function(value, callback){
+      console.log('validateInput', this, value)
+      if(value !== '111') {
+        return callback({
+          valid: false,
+          message: "set 111"
+        })
+      }
+      return callback({
+        valid:true,
+        message: 'horay'
+      })
+    }
+  },
   mounted() {},
 };
 </script>

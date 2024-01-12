@@ -29,6 +29,12 @@
   <div v-if="describe" :id="formId + '-described'" class="form-text">
     {{ describe }}
   </div>
+  <div class="valid-feedback" v-if="validationStatus.valid">
+    {{validationStatus.message}}
+  </div>
+  <div class="invalid-feedback" v-if="!validationStatus.valid">
+    {{validationStatus.message}}
+  </div>
 </template>
 <script>
 import { getFormItemId } from "./id-generator";
@@ -40,6 +46,10 @@ export default {
   // and will be exposed on `this`.
   data() {
     return {
+      validationTimeOut:false,
+      validationStatus: {
+
+      },
       formId: "",
       text: "",
       inputTypeTag: "input",
@@ -47,7 +57,7 @@ export default {
       describedby: undefined,
     };
   },
-  props: ["label", "size", "type", "placeholder", "describe", "id", "disabled", "rows", "readonly", "value", "modelValue", "aria-label", "aria-describedby", "autofocus"],
+  props: ["label", "size", "type", "placeholder", "describe", "id", "disabled", "rows", "readonly", "value", "modelValue", "aria-label", "aria-describedby", "autofocus", "validation"],
   emits: ['focusout', "keyup", "update:modelValue"],
   computed: {
     inputType: function () {
@@ -75,11 +85,31 @@ export default {
           classes = classes + " form-control-" + this.size;
         }
       }
+      if(this.validationStatus.valid) {
+        classes = classes + ' is-valid'
+      }
+      if(this.validationStatus.valid == false) {
+        classes = classes + ' is-invalid'
+      }
+      if(this.$attrs.class) {
+        classes = classes + ' ' + this.$attrs.class
+      }
       return classes;
     },
   },
+  methods: {
+    Validate: function(){
+      var self = this;
+      if(this.validation && typeof this.validation === 'function') {
+        this.validation(this.text, function(status) {
+          self.validationStatus = status
+        })
+      }
+    }
+  },
   watch: {
     text: function (newValue) {
+      this.Validate();
       if(newValue != undefined) {
         return this.$emit("update:modelValue", newValue);
       }
