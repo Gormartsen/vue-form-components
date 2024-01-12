@@ -101,7 +101,7 @@ export default {
     Validate: function(){
       var self = this;
       if(this.validationTimeOut) {
-        clearTimeout(validationTimeOut);
+        clearTimeout(this.validationTimeOut);
       }
 
       if(this.validation && typeof this.validation === 'function') {
