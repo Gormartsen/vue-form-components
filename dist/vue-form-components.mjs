@@ -59,7 +59,7 @@ const D = {
     this.formId = h(this.inputType, this.id), this.text = this.modelValue, this.type == "textarea" && (this.inputTypeTag = "textarea"), this.value && (this.text = this.value), this.ariaLabel && (this.arialabel = this.ariaLabel), this.ariaDescribedby && (this.describedby = this.ariaDescribedby), this.describe && (this.describedby = this.formId + "-described");
   },
   mounted: function() {
-    this.disabled && (this.$refs.input.disabled = !0), this.autofocus && this.$refs.input.focus();
+    this.disabled && (this.$refs.input.disabled = !0), this.autofocus && this.$refs.input.focus(), this.Validate();
   }
 }, R = ["for"], w = ["id", "placeholder", "aria-describedby", "type", "readonly", "aria-label"], U = ["id", "placeholder", "aria-describedby", "aria-label", "rows", "readonly"], M = ["id"], B = {
   key: 4,
