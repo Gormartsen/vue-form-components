@@ -1,6 +1,16 @@
-<style lang="scss"></style>
+<style lang="scss" scoped>
+.invalid-feedback, .valid-feedback {
+  display:block;
+}
+</style>
 <template>
   <label v-if="label" :for="formId" class="form-label">{{ label }}</label>
+  <div class="invalid-feedback" v-if="!validationStatus.valid">
+    {{validationStatus.message}}
+  </div>
+  <div class="valid-feedback" v-if="validationStatus.valid">
+    {{validationStatus.message}}
+  </div>
   <input
     v-if="inputTypeTag == 'input'"
     :id="formId"
@@ -29,12 +39,8 @@
   <div v-if="describe" :id="formId + '-described'" class="form-text">
     {{ describe }}
   </div>
-  <div class="valid-feedback" v-if="validationStatus.valid">
-    {{validationStatus.message}}
-  </div>
-  <div class="invalid-feedback" v-if="!validationStatus.valid">
-    {{validationStatus.message}}
-  </div>
+  
+  
 </template>
 <script>
 import { getFormItemId } from "./id-generator";
@@ -115,6 +121,7 @@ export default {
   },
   watch: {
     text: function (newValue) {
+      console.log('watch:text', newValue)
       this.Validate();
       if(newValue != undefined) {
         return this.$emit("update:modelValue", newValue);
@@ -122,6 +129,7 @@ export default {
     },
   },
   updated: function () {
+    console.log('updated', this.modelValue)
     if (this.disabled) {
       this.$refs["input"].disabled = true;
     } else {
@@ -134,6 +142,7 @@ export default {
     }
   },
   created: function () {
+    console.log('created', this.modelValue)
     this.formId = getFormItemId(this.inputType, this.id);
     this.text = this.modelValue;
     if (this.type == "textarea") {
@@ -160,7 +169,7 @@ export default {
     if(this.autofocus) {
       this.$refs["input"].focus();
     }
-    this.Validate();
+    console.log('mounted', this.modelValue)
   },
 };
 </script>
