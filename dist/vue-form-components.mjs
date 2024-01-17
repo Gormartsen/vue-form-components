@@ -1,8 +1,9 @@
-import { openBlock as l, createElementBlock as d, Fragment as m, toDisplayString as o, createCommentVNode as n, withDirectives as c, normalizeClass as b, vModelDynamic as T, vModelText as I, createElementVNode as p, renderList as k, vModelSelect as C, vModelCheckbox as S, vModelRadio as z } from "vue";
+import { openBlock as l, createElementBlock as d, Fragment as m, toDisplayString as n, createCommentVNode as o, withDirectives as c, normalizeClass as b, vModelDynamic as T, vModelText as I, createElementVNode as p, renderList as g, vModelSelect as C, vModelCheckbox as S, vModelRadio as z } from "vue";
 var V = 0, v = {}, x = {};
 const h = function(e, s) {
   return s !== void 0 ? x[s] === void 0 ? (x[s] = 0, s) : (x[s]++, s + "-" + x[s]) : e !== void 0 ? v[e] === void 0 ? (v[e] = 0, "form-id-" + e) : (v[e]++, "form-id-" + e + "-" + v[e]) : (V++, "form-id-" + V);
-}, y = (e, s) => {
+};
+const y = (e, s) => {
   const i = e.__vccOpts || e;
   for (const [f, t] of s)
     i[f] = t;
@@ -48,35 +49,37 @@ const D = {
   },
   watch: {
     text: function(e) {
-      if (this.Validate(), e != null)
+      if (console.log("watch:text", e), this.Validate(), e != null)
         return this.$emit("update:modelValue", e);
     }
   },
   updated: function() {
-    this.disabled ? this.$refs.input.disabled = !0 : this.$refs.input.disabled = !1, this.modelValue !== void 0 && this.text != this.modelValue && (this.text = this.modelValue);
+    console.log("updated", this.modelValue), this.disabled ? this.$refs.input.disabled = !0 : this.$refs.input.disabled = !1, this.modelValue !== void 0 && this.text != this.modelValue && (this.text = this.modelValue);
   },
   created: function() {
-    this.formId = h(this.inputType, this.id), this.text = this.modelValue, this.type == "textarea" && (this.inputTypeTag = "textarea"), this.value && (this.text = this.value), this.ariaLabel && (this.arialabel = this.ariaLabel), this.ariaDescribedby && (this.describedby = this.ariaDescribedby), this.describe && (this.describedby = this.formId + "-described");
+    console.log("created", this.modelValue), this.formId = h(this.inputType, this.id), this.text = this.modelValue, this.type == "textarea" && (this.inputTypeTag = "textarea"), this.value && (this.text = this.value), this.ariaLabel && (this.arialabel = this.ariaLabel), this.ariaDescribedby && (this.describedby = this.ariaDescribedby), this.describe && (this.describedby = this.formId + "-described");
   },
   mounted: function() {
-    this.disabled && (this.$refs.input.disabled = !0), this.autofocus && this.$refs.input.focus(), this.Validate();
+    this.disabled && (this.$refs.input.disabled = !0), this.autofocus && this.$refs.input.focus(), console.log("mounted", this.modelValue);
   }
-}, R = ["for"], w = ["id", "placeholder", "aria-describedby", "type", "readonly", "aria-label"], U = ["id", "placeholder", "aria-describedby", "aria-label", "rows", "readonly"], M = ["id"], B = {
-  key: 4,
-  class: "valid-feedback"
-}, L = {
-  key: 5,
+}, R = ["for"], w = {
+  key: 1,
   class: "invalid-feedback"
-};
+}, U = {
+  key: 2,
+  class: "valid-feedback"
+}, M = ["id", "placeholder", "aria-describedby", "type", "readonly", "aria-label"], B = ["id", "placeholder", "aria-describedby", "aria-label", "rows", "readonly"], L = ["id"];
 function N(e, s, i, f, t, a) {
   return l(), d(m, null, [
     i.label ? (l(), d("label", {
       key: 0,
       for: t.formId,
       class: "form-label"
-    }, o(i.label), 9, R)) : n("", !0),
+    }, n(i.label), 9, R)) : o("", !0),
+    t.validationStatus.valid ? o("", !0) : (l(), d("div", w, n(t.validationStatus.message), 1)),
+    t.validationStatus.valid ? (l(), d("div", U, n(t.validationStatus.message), 1)) : o("", !0),
     t.inputTypeTag == "input" ? c((l(), d("input", {
-      key: 1,
+      key: 3,
       id: t.formId,
       ref: "input",
       class: b(a.inputClasses),
@@ -87,11 +90,11 @@ function N(e, s, i, f, t, a) {
       "onUpdate:modelValue": s[0] || (s[0] = (r) => t.text = r),
       "aria-label": t.arialabel,
       onFocusout: s[1] || (s[1] = (r) => e.$emit("focusout"))
-    }, null, 42, w)), [
+    }, null, 42, M)), [
       [T, t.text]
-    ]) : n("", !0),
+    ]) : o("", !0),
     t.inputTypeTag == "textarea" ? c((l(), d("textarea", {
-      key: 2,
+      key: 4,
       id: t.formId,
       ref: "input",
       class: b(a.inputClasses),
@@ -101,19 +104,17 @@ function N(e, s, i, f, t, a) {
       "onUpdate:modelValue": s[2] || (s[2] = (r) => t.text = r),
       rows: i.rows,
       readonly: i.readonly
-    }, null, 10, U)), [
+    }, null, 10, B)), [
       [I, t.text]
-    ]) : n("", !0),
+    ]) : o("", !0),
     i.describe ? (l(), d("div", {
-      key: 3,
+      key: 5,
       id: t.formId + "-described",
       class: "form-text"
-    }, o(i.describe), 9, M)) : n("", !0),
-    t.validationStatus.valid ? (l(), d("div", B, o(t.validationStatus.message), 1)) : n("", !0),
-    t.validationStatus.valid ? n("", !0) : (l(), d("div", L, o(t.validationStatus.message), 1))
+    }, n(i.describe), 9, L)) : o("", !0)
   ], 64);
 }
-const re = /* @__PURE__ */ y(D, [["render", N]]);
+const re = /* @__PURE__ */ y(D, [["render", N], ["__scopeId", "data-v-f1df9774"]]);
 var E = ["lg", "sm"];
 const j = {
   // Properties returned from data() become reactive state
@@ -159,7 +160,7 @@ function J(e, s, i, f, t, a) {
       key: 0,
       for: t.formId,
       class: "form-label"
-    }, o(i.label), 9, q)) : n("", !0),
+    }, n(i.label), 9, q)) : o("", !0),
     c(p("select", {
       id: t.formId,
       ref: "input",
@@ -169,10 +170,10 @@ function J(e, s, i, f, t, a) {
       "onUpdate:modelValue": s[0] || (s[0] = (r) => t.text = r),
       multiple: i.multiple
     }, [
-      (l(!0), d(m, null, k(i.options, (r, u) => (l(), d("option", {
+      (l(!0), d(m, null, g(i.options, (r, u) => (l(), d("option", {
         key: u,
         value: u
-      }, o(r), 9, G))), 128))
+      }, n(r), 9, G))), 128))
     ], 10, A), [
       [C, t.text]
     ]),
@@ -180,10 +181,10 @@ function J(e, s, i, f, t, a) {
       key: 1,
       id: t.formId + "-described",
       class: "form-text"
-    }, o(i.describe), 9, H)) : n("", !0)
+    }, n(i.describe), 9, H)) : o("", !0)
   ], 64);
 }
-const ne = /* @__PURE__ */ y(j, [["render", J]]), K = {
+const oe = /* @__PURE__ */ y(j, [["render", J]]), K = {
   // Properties returned from data() become reactive state
   // and will be exposed on `this`.
   data() {
@@ -231,10 +232,10 @@ function X(e, s, i, f, t, a) {
       key: 0,
       for: t.formId,
       class: "form-check-label"
-    }, o(i.label), 9, W)) : n("", !0)
+    }, n(i.label), 9, W)) : o("", !0)
   ]);
 }
-const oe = /* @__PURE__ */ y(K, [["render", X]]);
+const ne = /* @__PURE__ */ y(K, [["render", X]]);
 var _ = -1, Y = function() {
   var e = "form-radio";
   return _ == -1 ? (_++, e) : (_++, e + "-" + _);
@@ -278,7 +279,7 @@ const Z = {
   }
 }, $ = ["id", "readonly", "value", "name", "disabled"], ee = ["for"];
 function te(e, s, i, f, t, a) {
-  return l(!0), d(m, null, k(i.options, (r, u) => (l(), d("div", {
+  return l(!0), d(m, null, g(i.options, (r, u) => (l(), d("div", {
     class: "form-check",
     key: u
   }, [
@@ -288,7 +289,7 @@ function te(e, s, i, f, t, a) {
       ref: "input",
       class: "form-check-input",
       readonly: i.readonly,
-      "onUpdate:modelValue": s[0] || (s[0] = (g) => t.selected = g),
+      "onUpdate:modelValue": s[0] || (s[0] = (k) => t.selected = k),
       value: u,
       name: t.name,
       type: "radio",
@@ -299,7 +300,7 @@ function te(e, s, i, f, t, a) {
     p("label", {
       for: a.getRadioId(u),
       class: "form-check-label"
-    }, o(r), 9, ee)
+    }, n(r), 9, ee)
   ]))), 128);
 }
 const ue = /* @__PURE__ */ y(Z, [["render", te]]), ie = {
@@ -341,7 +342,7 @@ function de(e, s, i, f, t, a) {
       key: 0,
       for: t.formId,
       class: "form-check-label"
-    }, o(i.label), 9, se)) : n("", !0),
+    }, n(i.label), 9, se)) : o("", !0),
     c(p("input", {
       id: t.formId,
       ref: "input",
@@ -358,9 +359,9 @@ function de(e, s, i, f, t, a) {
 }
 const fe = /* @__PURE__ */ y(ie, [["render", de]]);
 export {
-  oe as FormCheckbox,
+  ne as FormCheckbox,
   re as FormInput,
   ue as FormRadio,
   fe as FormRange,
-  ne as FormSelect
+  oe as FormSelect
 };
