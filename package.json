@@ -20,7 +20,8 @@
     ".": {
       "import": "./dist/vue-form-components.mjs",
       "require": "./dist/vue-form-components.umd.cjs"
-    }
+    },
+    "./style": "./dist/style.css"
   },
   "repository": {
     "type": "git",
