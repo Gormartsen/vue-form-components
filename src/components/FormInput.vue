@@ -20,6 +20,7 @@
     :aria-describedby="describedby"
     :type="inputType"
     :readonly="readonly"
+    :autocomplete="autocomplete"
     v-model="text"
     :aria-label="arialabel"
     v-on:focusout="$emit('focusout')"
@@ -32,6 +33,7 @@
     :placeholder="placeholder"
     :aria-describedby="describedby"
     :aria-label="arialabel"
+    :autocomplete="autocomplete"
     v-model="text"
     :rows="rows"
     :readonly="readonly"
@@ -63,7 +65,7 @@ export default {
       describedby: undefined,
     };
   },
-  props: ["label", "size", "type", "placeholder", "describe", "id", "disabled", "rows", "readonly", "value", "modelValue", "aria-label", "aria-describedby", "autofocus", "validation"],
+  props: ["label", "size", "type", "placeholder", "describe", "id", "disabled", "rows", "readonly", "value", "modelValue", "aria-label", "aria-describedby", "autofocus", "validation", "autocomplete"],
   emits: ['focusout', "keyup", "update:modelValue"],
   computed: {
     inputType: function () {

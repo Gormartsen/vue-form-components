@@ -1,6 +1,6 @@
-import { openBlock as l, createElementBlock as d, Fragment as m, toDisplayString as n, createCommentVNode as o, withDirectives as c, normalizeClass as b, vModelDynamic as T, vModelText as I, createElementVNode as p, renderList as g, vModelSelect as S, vModelCheckbox as C, vModelRadio as z } from "vue";
+import { openBlock as l, createElementBlock as d, Fragment as h, toDisplayString as n, createCommentVNode as r, withDirectives as c, normalizeClass as b, vModelDynamic as T, vModelText as I, createElementVNode as p, renderList as g, vModelSelect as S, vModelCheckbox as C, vModelRadio as z } from "vue";
 var V = 0, v = {}, x = {};
-const h = function(e, s) {
+const m = function(e, s) {
   return s !== void 0 ? x[s] === void 0 ? (x[s] = 0, s) : (x[s]++, s + "-" + x[s]) : e !== void 0 ? v[e] === void 0 ? (v[e] = 0, "form-id-" + e) : (v[e]++, "form-id-" + e + "-" + v[e]) : (V++, "form-id-" + V);
 };
 const y = (e, s) => {
@@ -24,7 +24,7 @@ const D = {
       describedby: void 0
     };
   },
-  props: ["label", "size", "type", "placeholder", "describe", "id", "disabled", "rows", "readonly", "value", "modelValue", "aria-label", "aria-describedby", "autofocus", "validation"],
+  props: ["label", "size", "type", "placeholder", "describe", "id", "disabled", "rows", "readonly", "value", "modelValue", "aria-label", "aria-describedby", "autofocus", "validation", "autocomplete"],
   emits: ["focusout", "keyup", "update:modelValue"],
   computed: {
     inputType: function() {
@@ -57,7 +57,7 @@ const D = {
     console.log("updated", this.modelValue), this.disabled ? this.$refs.input.disabled = !0 : this.$refs.input.disabled = !1, this.modelValue !== void 0 && this.text != this.modelValue && (this.text = this.modelValue);
   },
   created: function() {
-    console.log("created", this.modelValue), this.formId = h(this.inputType, this.id), this.text = this.modelValue, this.type == "textarea" && (this.inputTypeTag = "textarea"), this.value && (this.text = this.value), this.ariaLabel && (this.arialabel = this.ariaLabel), this.ariaDescribedby && (this.describedby = this.ariaDescribedby), this.describe && (this.describedby = this.formId + "-described");
+    console.log("created", this.modelValue), this.formId = m(this.inputType, this.id), this.text = this.modelValue, this.type == "textarea" && (this.inputTypeTag = "textarea"), this.value && (this.text = this.value), this.ariaLabel && (this.arialabel = this.ariaLabel), this.ariaDescribedby && (this.describedby = this.ariaDescribedby), this.describe && (this.describedby = this.formId + "-described");
   },
   mounted: function() {
     this.disabled && (this.$refs.input.disabled = !0), this.autofocus && this.$refs.input.focus(), console.log("mounted", this.modelValue);
@@ -68,16 +68,16 @@ const D = {
 }, U = {
   key: 2,
   class: "valid-feedback"
-}, M = ["id", "placeholder", "aria-describedby", "type", "readonly", "aria-label"], B = ["id", "placeholder", "aria-describedby", "aria-label", "rows", "readonly"], L = ["id"];
+}, M = ["id", "placeholder", "aria-describedby", "type", "readonly", "autocomplete", "aria-label"], B = ["id", "placeholder", "aria-describedby", "aria-label", "autocomplete", "rows", "readonly"], L = ["id"];
 function N(e, s, i, f, t, a) {
-  return l(), d(m, null, [
+  return l(), d(h, null, [
     i.label ? (l(), d("label", {
       key: 0,
       for: t.formId,
       class: "form-label"
-    }, n(i.label), 9, R)) : o("", !0),
-    t.validationStatus.valid == !1 && t.validationStatus.message != "" ? (l(), d("div", w, n(t.validationStatus.message), 1)) : o("", !0),
-    t.validationStatus.valid && t.validationStatus.message != "" ? (l(), d("div", U, n(t.validationStatus.message), 1)) : o("", !0),
+    }, n(i.label), 9, R)) : r("", !0),
+    t.validationStatus.valid == !1 && t.validationStatus.message != "" ? (l(), d("div", w, n(t.validationStatus.message), 1)) : r("", !0),
+    t.validationStatus.valid && t.validationStatus.message != "" ? (l(), d("div", U, n(t.validationStatus.message), 1)) : r("", !0),
     t.inputTypeTag == "input" ? c((l(), d("input", {
       key: 3,
       id: t.formId,
@@ -87,12 +87,13 @@ function N(e, s, i, f, t, a) {
       "aria-describedby": t.describedby,
       type: a.inputType,
       readonly: i.readonly,
-      "onUpdate:modelValue": s[0] || (s[0] = (r) => t.text = r),
+      autocomplete: i.autocomplete,
+      "onUpdate:modelValue": s[0] || (s[0] = (o) => t.text = o),
       "aria-label": t.arialabel,
-      onFocusout: s[1] || (s[1] = (r) => e.$emit("focusout"))
+      onFocusout: s[1] || (s[1] = (o) => e.$emit("focusout"))
     }, null, 42, M)), [
       [T, t.text]
-    ]) : o("", !0),
+    ]) : r("", !0),
     t.inputTypeTag == "textarea" ? c((l(), d("textarea", {
       key: 4,
       id: t.formId,
@@ -101,20 +102,21 @@ function N(e, s, i, f, t, a) {
       placeholder: i.placeholder,
       "aria-describedby": t.describedby,
       "aria-label": t.arialabel,
-      "onUpdate:modelValue": s[2] || (s[2] = (r) => t.text = r),
+      autocomplete: i.autocomplete,
+      "onUpdate:modelValue": s[2] || (s[2] = (o) => t.text = o),
       rows: i.rows,
       readonly: i.readonly
     }, null, 10, B)), [
       [I, t.text]
-    ]) : o("", !0),
+    ]) : r("", !0),
     i.describe ? (l(), d("div", {
       key: 5,
       id: t.formId + "-described",
       class: "form-text"
-    }, n(i.describe), 9, L)) : o("", !0)
+    }, n(i.describe), 9, L)) : r("", !0)
   ], 64);
 }
-const re = /* @__PURE__ */ y(D, [["render", N], ["__scopeId", "data-v-dca38223"]]);
+const oe = /* @__PURE__ */ y(D, [["render", N], ["__scopeId", "data-v-be48309f"]]);
 var E = ["lg", "sm"];
 const j = {
   // Properties returned from data() become reactive state
@@ -148,32 +150,32 @@ const j = {
     this.disabled ? this.$refs.input.disabled = !0 : this.$refs.input.disabled = !1, this.modelValue !== void 0 && this.text != this.modelValue && (this.text = this.modelValue);
   },
   created: function() {
-    this.formId = h(this.type, this.id), this.text = this.modelValue, this.value && (this.text = this.value);
+    this.formId = m(this.type, this.id), this.text = this.modelValue, this.value && (this.text = this.value);
   },
   mounted: function() {
     this.disabled && (this.$refs.input.disabled = !0);
   }
 }, q = ["for"], A = ["id", "aria-describedby", "readonly", "multiple"], G = ["value"], H = ["id"];
 function J(e, s, i, f, t, a) {
-  return l(), d(m, null, [
+  return l(), d(h, null, [
     i.label ? (l(), d("label", {
       key: 0,
       for: t.formId,
       class: "form-label"
-    }, n(i.label), 9, q)) : o("", !0),
+    }, n(i.label), 9, q)) : r("", !0),
     c(p("select", {
       id: t.formId,
       ref: "input",
       class: b(a.inputClasses),
       "aria-describedby": a.describedby,
       readonly: i.readonly,
-      "onUpdate:modelValue": s[0] || (s[0] = (r) => t.text = r),
+      "onUpdate:modelValue": s[0] || (s[0] = (o) => t.text = o),
       multiple: i.multiple
     }, [
-      (l(!0), d(m, null, g(i.options, (r, u) => (l(), d("option", {
+      (l(!0), d(h, null, g(i.options, (o, u) => (l(), d("option", {
         key: u,
         value: u
-      }, n(r), 9, G))), 128))
+      }, n(o), 9, G))), 128))
     ], 10, A), [
       [S, t.text]
     ]),
@@ -181,10 +183,10 @@ function J(e, s, i, f, t, a) {
       key: 1,
       id: t.formId + "-described",
       class: "form-text"
-    }, n(i.describe), 9, H)) : o("", !0)
+    }, n(i.describe), 9, H)) : r("", !0)
   ], 64);
 }
-const oe = /* @__PURE__ */ y(j, [["render", J]]), K = {
+const re = /* @__PURE__ */ y(j, [["render", J]]), K = {
   // Properties returned from data() become reactive state
   // and will be exposed on `this`.
   data() {
@@ -211,7 +213,7 @@ const oe = /* @__PURE__ */ y(j, [["render", J]]), K = {
     this.disabled ? this.$refs.input.disabled = !0 : this.$refs.input.disabled = !1, this.modelValue ? this.text = !0 : this.text = !1;
   },
   created: function() {
-    this.formId = h(this.type, this.id), this.modelValue ? this.text = !0 : this.$emit("update:modelValue", !1), this.value && (this.text = !0);
+    this.formId = m(this.type, this.id), this.modelValue ? this.text = !0 : this.$emit("update:modelValue", !1), this.value && (this.text = !0);
   },
   mounted: function() {
     this.disabled && (this.$refs.input.disabled = !0);
@@ -224,7 +226,7 @@ function X(e, s, i, f, t, a) {
       ref: "input",
       class: b(a.inputClasses),
       type: "checkbox",
-      "onUpdate:modelValue": s[0] || (s[0] = (r) => t.text = r)
+      "onUpdate:modelValue": s[0] || (s[0] = (o) => t.text = o)
     }, null, 10, Q), [
       [C, t.text]
     ]),
@@ -232,7 +234,7 @@ function X(e, s, i, f, t, a) {
       key: 0,
       for: t.formId,
       class: "form-check-label"
-    }, n(i.label), 9, W)) : o("", !0)
+    }, n(i.label), 9, W)) : r("", !0)
   ]);
 }
 const ne = /* @__PURE__ */ y(K, [["render", X]]);
@@ -262,7 +264,7 @@ const Z = {
   },
   methods: {
     getRadioId: function(e) {
-      return this.generatedIds[e] ? this.generatedIds[e] : (this.generatedIds[e] = h("radio"), this.generatedIds[e]);
+      return this.generatedIds[e] ? this.generatedIds[e] : (this.generatedIds[e] = m("radio"), this.generatedIds[e]);
     },
     IsDisabled: function(e) {
       if (this.disabled && this.disabled.indexOf && this.disabled.indexOf(e) !== -1)
@@ -273,13 +275,13 @@ const Z = {
     this.modelValue !== void 0 && this.text != this.modelValue && (this.selected = this.modelValue);
   },
   created: function() {
-    this.formId = h(this.type, this.id), this.name = Y(), this.selected = this.modelValue, this.value && (this.selected = this.value);
+    this.formId = m(this.type, this.id), this.name = Y(), this.selected = this.modelValue, this.value && (this.selected = this.value);
   },
   mounted: function() {
   }
 }, $ = ["id", "readonly", "value", "name", "disabled"], ee = ["for"];
 function te(e, s, i, f, t, a) {
-  return l(!0), d(m, null, g(i.options, (r, u) => (l(), d("div", {
+  return l(!0), d(h, null, g(i.options, (o, u) => (l(), d("div", {
     class: "form-check",
     key: u
   }, [
@@ -300,7 +302,7 @@ function te(e, s, i, f, t, a) {
     p("label", {
       for: a.getRadioId(u),
       class: "form-check-label"
-    }, n(r), 9, ee)
+    }, n(o), 9, ee)
   ]))), 128);
 }
 const ue = /* @__PURE__ */ y(Z, [["render", te]]), ie = {
@@ -330,25 +332,25 @@ const ue = /* @__PURE__ */ y(Z, [["render", te]]), ie = {
     this.disabled ? this.$refs.input.disabled = !0 : this.$refs.input.disabled = !1, this.modelValue && this.text != this.modelValue && (this.text = this.modelValue);
   },
   created: function() {
-    this.formId = h(this.type, this.id), this.modelValue && (this.text = this.modelValue), this.value && (this.text = this.value);
+    this.formId = m(this.type, this.id), this.modelValue && (this.text = this.modelValue), this.value && (this.text = this.value);
   },
   mounted: function() {
     this.disabled && (this.$refs.input.disabled = !0);
   }
 }, se = ["for"], le = ["id", "min", "max", "step"];
 function de(e, s, i, f, t, a) {
-  return l(), d(m, null, [
+  return l(), d(h, null, [
     i.label ? (l(), d("label", {
       key: 0,
       for: t.formId,
       class: "form-check-label"
-    }, n(i.label), 9, se)) : o("", !0),
+    }, n(i.label), 9, se)) : r("", !0),
     c(p("input", {
       id: t.formId,
       ref: "input",
       class: b(a.inputClasses),
       type: "range",
-      "onUpdate:modelValue": s[0] || (s[0] = (r) => t.text = r),
+      "onUpdate:modelValue": s[0] || (s[0] = (o) => t.text = o),
       min: i.min,
       max: i.max,
       step: i.step
@@ -360,8 +362,8 @@ function de(e, s, i, f, t, a) {
 const fe = /* @__PURE__ */ y(ie, [["render", de]]);
 export {
   ne as FormCheckbox,
-  re as FormInput,
+  oe as FormInput,
   ue as FormRadio,
   fe as FormRange,
-  oe as FormSelect
+  re as FormSelect
 };
