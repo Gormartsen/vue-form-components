@@ -5,7 +5,7 @@
 </style>
 <template>
   <label v-if="label" :for="formId" class="form-label">{{ label }}</label>
-  <div class="invalid-feedback" v-if="!validationStatus.valid && validationStatus.message != ''">
+  <div class="invalid-feedback" v-if="validationStatus.valid == false && validationStatus.message != ''">
     {{validationStatus.message}}
   </div>
   <div class="valid-feedback" v-if="validationStatus.valid && validationStatus.message != ''">

@@ -76,7 +76,7 @@ function N(e, s, i, f, t, a) {
       for: t.formId,
       class: "form-label"
     }, n(i.label), 9, R)) : o("", !0),
-    !t.validationStatus.valid && t.validationStatus.message != "" ? (l(), d("div", w, n(t.validationStatus.message), 1)) : o("", !0),
+    t.validationStatus.valid == !1 && t.validationStatus.message != "" ? (l(), d("div", w, n(t.validationStatus.message), 1)) : o("", !0),
     t.validationStatus.valid && t.validationStatus.message != "" ? (l(), d("div", U, n(t.validationStatus.message), 1)) : o("", !0),
     t.inputTypeTag == "input" ? c((l(), d("input", {
       key: 3,
@@ -114,7 +114,7 @@ function N(e, s, i, f, t, a) {
     }, n(i.describe), 9, L)) : o("", !0)
   ], 64);
 }
-const re = /* @__PURE__ */ y(D, [["render", N], ["__scopeId", "data-v-7f0da223"]]);
+const re = /* @__PURE__ */ y(D, [["render", N], ["__scopeId", "data-v-dca38223"]]);
 var E = ["lg", "sm"];
 const j = {
   // Properties returned from data() become reactive state
