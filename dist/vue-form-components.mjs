@@ -1,4 +1,4 @@
-import { openBlock as l, createElementBlock as d, Fragment as m, toDisplayString as n, createCommentVNode as o, withDirectives as c, normalizeClass as b, vModelDynamic as T, vModelText as I, createElementVNode as p, renderList as g, vModelSelect as C, vModelCheckbox as S, vModelRadio as z } from "vue";
+import { openBlock as l, createElementBlock as d, Fragment as m, toDisplayString as n, createCommentVNode as o, withDirectives as c, normalizeClass as b, vModelDynamic as T, vModelText as I, createElementVNode as p, renderList as g, vModelSelect as S, vModelCheckbox as C, vModelRadio as z } from "vue";
 var V = 0, v = {}, x = {};
 const h = function(e, s) {
   return s !== void 0 ? x[s] === void 0 ? (x[s] = 0, s) : (x[s]++, s + "-" + x[s]) : e !== void 0 ? v[e] === void 0 ? (v[e] = 0, "form-id-" + e) : (v[e]++, "form-id-" + e + "-" + v[e]) : (V++, "form-id-" + V);
@@ -76,8 +76,8 @@ function N(e, s, i, f, t, a) {
       for: t.formId,
       class: "form-label"
     }, n(i.label), 9, R)) : o("", !0),
-    t.validationStatus.valid ? o("", !0) : (l(), d("div", w, n(t.validationStatus.message), 1)),
-    t.validationStatus.valid ? (l(), d("div", U, n(t.validationStatus.message), 1)) : o("", !0),
+    !t.validationStatus.valid && t.validationStatus.message != "" ? (l(), d("div", w, n(t.validationStatus.message), 1)) : o("", !0),
+    t.validationStatus.valid && t.validationStatus.message != "" ? (l(), d("div", U, n(t.validationStatus.message), 1)) : o("", !0),
     t.inputTypeTag == "input" ? c((l(), d("input", {
       key: 3,
       id: t.formId,
@@ -114,7 +114,7 @@ function N(e, s, i, f, t, a) {
     }, n(i.describe), 9, L)) : o("", !0)
   ], 64);
 }
-const re = /* @__PURE__ */ y(D, [["render", N], ["__scopeId", "data-v-f1df9774"]]);
+const re = /* @__PURE__ */ y(D, [["render", N], ["__scopeId", "data-v-7f0da223"]]);
 var E = ["lg", "sm"];
 const j = {
   // Properties returned from data() become reactive state
@@ -175,7 +175,7 @@ function J(e, s, i, f, t, a) {
         value: u
       }, n(r), 9, G))), 128))
     ], 10, A), [
-      [C, t.text]
+      [S, t.text]
     ]),
     i.describe ? (l(), d("div", {
       key: 1,
@@ -226,7 +226,7 @@ function X(e, s, i, f, t, a) {
       type: "checkbox",
       "onUpdate:modelValue": s[0] || (s[0] = (r) => t.text = r)
     }, null, 10, Q), [
-      [S, t.text]
+      [C, t.text]
     ]),
     i.label ? (l(), d("label", {
       key: 0,
