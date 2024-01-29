@@ -1,6 +1,6 @@
 {
   "name": "vue-form-components",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Vue 3 form components based on Bootstrap 5.1",
   "files": [
     "dist",
@@ -8,8 +8,8 @@
     "src/components",
     "LICENSE.txt"
   ],
-  "main": "./dist/vue-form-components.umd.cjs",
-  "module": "./dist/vue-form-components.mjs",
+  "main": "index.js",
+  "module": "index.js",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -18,7 +18,7 @@
   },
   "exports": {
     ".": {
-      "import": "./dist/vue-form-components.mjs",
+      "import": "./index.js",
       "require": "./dist/vue-form-components.umd.cjs"
     },
     "./style": "./dist/style.css"
