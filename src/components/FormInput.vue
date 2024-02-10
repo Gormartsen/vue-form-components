@@ -24,6 +24,8 @@
     v-model="text"
     :aria-label="arialabel"
     v-on:focusout="$emit('focusout')"
+    v-on:focus="$emit('focus')"
+    v-on:keyup.enter="enterPressed"/>
   />
   <textarea
     v-if="inputTypeTag == 'textarea'"
@@ -37,6 +39,8 @@
     v-model="text"
     :rows="rows"
     :readonly="readonly"
+    v-on:focusout="$emit('focusout')"
+    v-on:focus="$emit('focus')"
   ></textarea>
   <div v-if="describe" :id="formId + '-described'" class="form-text">
     {{ describe }}
@@ -119,6 +123,9 @@ export default {
           })
         }, 300)
       }
+    },
+    enterPressed: function(){
+      this.$refs.input.blur();
     }
   },
   watch: {
