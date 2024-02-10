@@ -25,7 +25,7 @@
     :aria-label="arialabel"
     v-on:focusout="$emit('focusout')"
     v-on:focus="$emit('focus')"
-    v-on:keyup.enter="enterPressed"/>
+    v-on:keyup.enter="enterPressed"
   />
   <textarea
     v-if="inputTypeTag == 'textarea'"
