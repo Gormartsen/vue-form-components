@@ -70,7 +70,7 @@ export default {
     };
   },
   props: ["label", "size", "type", "placeholder", "describe", "id", "disabled", "rows", "readonly", "value", "modelValue", "aria-label", "aria-describedby", "autofocus", "validation", "autocomplete"],
-  emits: ['focusout', "keyup", "update:modelValue"],
+  emits: ['focusout', 'focus', "keyup", "update:modelValue"],
   computed: {
     inputType: function () {
       var defaultType = "text";

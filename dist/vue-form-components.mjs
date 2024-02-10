@@ -25,7 +25,7 @@ const R = {
     };
   },
   props: ["label", "size", "type", "placeholder", "describe", "id", "disabled", "rows", "readonly", "value", "modelValue", "aria-label", "aria-describedby", "autofocus", "validation", "autocomplete"],
-  emits: ["focusout", "keyup", "update:modelValue"],
+  emits: ["focusout", "focus", "keyup", "update:modelValue"],
   computed: {
     inputType: function() {
       var e = "text";
@@ -124,7 +124,7 @@ function E(e, i, s, f, t, o) {
     }, n(s.describe), 9, P)) : r("", !0)
   ], 64);
 }
-const ne = /* @__PURE__ */ y(R, [["render", E], ["__scopeId", "data-v-fc7b779f"]]);
+const ne = /* @__PURE__ */ y(R, [["render", E], ["__scopeId", "data-v-256626c2"]]);
 var K = ["lg", "sm"];
 const j = {
   // Properties returned from data() become reactive state
