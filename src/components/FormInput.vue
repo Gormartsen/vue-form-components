@@ -23,7 +23,7 @@
     :autocomplete="autocomplete"
     v-model="text"
     :aria-label="arialabel"
-    v-on:focusout="$emit('focusout')"
+    v-on:focusout="focusOut()"
     v-on:focus="$emit('focus')"
     v-on:keyup.enter="enterPressed"
   />
@@ -39,7 +39,7 @@
     v-model="text"
     :rows="rows"
     :readonly="readonly"
-    v-on:focusout="$emit('focusout')"
+    v-on:focusout="focusOut()"
     v-on:focus="$emit('focus')"
   ></textarea>
   <div v-if="describe" :id="formId + '-described'" class="form-text">
@@ -110,6 +110,10 @@ export default {
     },
   },
   methods: {
+    focusOut: function(){
+      this.Validate();
+      this.$emit('focusout')
+    },
     Validate: function(){
       var self = this;
       if(this.validationTimeOut) {
