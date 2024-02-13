@@ -136,6 +136,12 @@ export default {
     }
   },
   watch: {
+    validation: function(){
+      if(this.validation && typeof this.validation === 'function') {
+      } else {
+        this.validationStatus = this.validation
+      }
+    },
     text: function (newValue) {
       this.Validate();
       if(newValue != undefined) {
