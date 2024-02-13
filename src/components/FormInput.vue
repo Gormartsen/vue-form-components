@@ -122,7 +122,8 @@ export default {
             self.validationStatus = status
           })
         }, 300)
-      } else {
+      }
+      if(this.validation) {
         self.validationStatus = this.validation
       }
     },
