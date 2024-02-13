@@ -122,6 +122,8 @@ export default {
             self.validationStatus = status
           })
         }, 300)
+      } else {
+        self.validationStatus = this.validation
       }
     },
     enterPressed: function(){
